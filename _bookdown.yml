@@ -1,0 +1,7 @@
+book_filename: "Homeless Database Project"
+output_dir: docs
+delete_merged_file: true
+new_session: false
+# edit: https://github.com/alecng27/Homeless_Database/edit/master/%s
+# view: https://github.com/alecng27/Homeless_Database/blob/master/%s
+# history: https://github.com/alecng27/Homeless_Database/commits/master/%s

@@ -1,0 +1,30 @@
+--- 
+title: "Homeless Data Project"
+author: "Alec Nguyen"
+date: "`r Sys.time()`"
+site: bookdown::bookdown_site
+bibliography: references.bib
+biblio-style: apalike
+link-citations: yes
+---
+
+# Sources {-}
+
+[HUD Awards and Allocations](https://www.hudexchange.info/grantees/allocations-awards/)
+
+[PIT and HIC Data Since 2007](https://www.hudexchange.info/resource/3031/pit-and-hic-data-since-2007/)
+
+[CoC Homeless Populations and Subpopulations Reports](https://www.hudexchange.info/programs/coc/coc-homeless-populations-and-subpopulations-reports/)
+
+
+
+
+
+
+
+
+
+
+
+
+

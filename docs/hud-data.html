@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>1 HUD Data | Homelessness Data Project</title>
+  <meta name="description" content="1 HUD Data | Homelessness Data Project" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="1 HUD Data | Homelessness Data Project" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="1 HUD Data | Homelessness Data Project" />
+  
+  
+  
+
+<meta name="author" content="Alec Nguyen" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="year-trend-table.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Sources</a></li>
+<li class="chapter" data-level="1" data-path="hud-data.html"><a href="hud-data.html"><i class="fa fa-check"></i><b>1</b> HUD Data</a></li>
+<li class="chapter" data-level="2" data-path="year-trend-table.html"><a href="year-trend-table.html"><i class="fa fa-check"></i><b>2</b> 5-Year Trend Table</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="year-trend-table.html"><a href="year-trend-table.html#state-average"><i class="fa fa-check"></i><b>2.1</b> State Average</a></li>
+<li class="chapter" data-level="2.2" data-path="year-trend-table.html"><a href="year-trend-table.html#nation-average"><i class="fa fa-check"></i><b>2.2</b> Nation Average</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="year-trend-table-inflation-adjusted.html"><a href="year-trend-table-inflation-adjusted.html"><i class="fa fa-check"></i><b>3</b> 5-Year Trend Table (Inflation Adjusted)</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="year-trend-table-inflation-adjusted.html"><a href="year-trend-table-inflation-adjusted.html#state-average-1"><i class="fa fa-check"></i><b>3.1</b> State Average</a></li>
+<li class="chapter" data-level="3.2" data-path="year-trend-table-inflation-adjusted.html"><a href="year-trend-table-inflation-adjusted.html#nation-average-1"><i class="fa fa-check"></i><b>3.2</b> Nation Average</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="revisions.html"><a href="revisions.html"><i class="fa fa-check"></i><b>4</b> Revisions</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="revisions.html"><a href="revisions.html#reason-for-manual-input-of-mi-and-sud-variables"><i class="fa fa-check"></i><b>4.1</b> Reason for manual-input of MI and SUD variables</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Homelessness Data Project</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="hud-data" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> HUD Data</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="hud-data.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plm) </span>
+<span id="cb1-2"><a href="hud-data.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidycensus)</span>
+<span id="cb1-3"><a href="hud-data.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-4"><a href="hud-data.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb1-5"><a href="hud-data.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb1-6"><a href="hud-data.html#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(assertive)</span>
+<span id="cb1-7"><a href="hud-data.html#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(visdat)</span>
+<span id="cb1-8"><a href="hud-data.html#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringdist)</span>
+<span id="cb1-9"><a href="hud-data.html#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fuzzyjoin)</span>
+<span id="cb1-10"><a href="hud-data.html#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reclin)</span>
+<span id="cb1-11"><a href="hud-data.html#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb1-12"><a href="hud-data.html#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pander)</span>
+<span id="cb1-13"><a href="hud-data.html#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stargazer)</span>
+<span id="cb1-14"><a href="hud-data.html#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb1-15"><a href="hud-data.html#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb1-16"><a href="hud-data.html#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(formattable)</span>
+<span id="cb1-17"><a href="hud-data.html#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(naniar)</span>
+<span id="cb1-18"><a href="hud-data.html#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb1-19"><a href="hud-data.html#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(wbstats) <span class="co"># To get data from the World Bank API</span></span>
+<span id="cb1-20"><a href="hud-data.html#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">tigris_use_cache =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-21"><a href="hud-data.html#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="do">## turn off scientific notation</span></span>
+<span id="cb1-22"><a href="hud-data.html#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="hud-data.html#cb2-1" aria-hidden="true" tabindex="-1"></a>CoC_Awards <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;CoC Awards.xlsx&quot;</span>)</span>
+<span id="cb2-2"><a href="hud-data.html#cb2-2" aria-hidden="true" tabindex="-1"></a>PIT_Chronic_Data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;2015-2020 PIT, Chronic.xlsx&quot;</span>, <span class="at">sheet =</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="hud-data.html#cb3-1" aria-hidden="true" tabindex="-1"></a>CoC_Awards <span class="ot">&lt;-</span> CoC_Awards <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="hud-data.html#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Year, State) <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="hud-data.html#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="st">`</span><span class="at">Award Amount</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">sum</span>(<span class="st">`</span><span class="at">Award Amount</span><span class="st">`</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-4"><a href="hud-data.html#cb3-4" aria-hidden="true" tabindex="-1"></a>      <span class="fu">arrange</span>(<span class="fu">desc</span>(Year)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-5"><a href="hud-data.html#cb3-5" aria-hidden="true" tabindex="-1"></a>         <span class="fu">filter</span>(State <span class="sc">!=</span> <span class="st">&quot;MP&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-6"><a href="hud-data.html#cb3-6" aria-hidden="true" tabindex="-1"></a>          <span class="fu">mutate</span>(<span class="at">Year =</span> <span class="fu">as.factor</span>(Year), <span class="at">State =</span> <span class="fu">as.factor</span>(State))</span>
+<span id="cb3-7"><a href="hud-data.html#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="hud-data.html#cb3-8" aria-hidden="true" tabindex="-1"></a>PIT_Chronic_Data <span class="ot">&lt;-</span> PIT_Chronic_Data <span class="sc">%&gt;%</span> </span>
+<span id="cb3-9"><a href="hud-data.html#cb3-9" aria-hidden="true" tabindex="-1"></a>          <span class="fu">mutate</span>(<span class="at">Year =</span> <span class="fu">as.factor</span>(Year), <span class="at">State =</span> <span class="fu">as.factor</span>(State))</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="hud-data.html#cb4-1" aria-hidden="true" tabindex="-1"></a>PIT_Chronic_Data2020 <span class="ot">&lt;-</span> PIT_Chronic_Data <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="hud-data.html#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Year <span class="sc">==</span> <span class="dv">2020</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="hud-data.html#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">everything</span>(), <span class="sc">-</span>Year)</span>
+<span id="cb4-4"><a href="hud-data.html#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="hud-data.html#cb4-5" aria-hidden="true" tabindex="-1"></a>CoC_Awards2020 <span class="ot">&lt;-</span> CoC_Awards <span class="sc">%&gt;%</span></span>
+<span id="cb4-6"><a href="hud-data.html#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Year <span class="sc">==</span> <span class="dv">2020</span>) </span>
+<span id="cb4-7"><a href="hud-data.html#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="hud-data.html#cb4-8" aria-hidden="true" tabindex="-1"></a>Trend_Data2020 <span class="ot">&lt;-</span> PIT_Chronic_Data2020 <span class="sc">%&gt;%</span></span>
+<span id="cb4-9"><a href="hud-data.html#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(CoC_Awards2020, <span class="at">by =</span> <span class="st">&quot;State&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-10"><a href="hud-data.html#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(Year, <span class="fu">everything</span>())</span>
+<span id="cb4-11"><a href="hud-data.html#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="hud-data.html#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking matches between datasets</span></span>
+<span id="cb4-13"><a href="hud-data.html#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co"># PIT_Chronic_Data2020 %&gt;%</span></span>
+<span id="cb4-14"><a href="hud-data.html#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co">#  anti_join(CoC_Awards2020, by = &quot;State&quot;)</span></span>
+<span id="cb4-15"><a href="hud-data.html#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="hud-data.html#cb4-16" aria-hidden="true" tabindex="-1"></a>PIT_Chronic_Data2019 <span class="ot">&lt;-</span> PIT_Chronic_Data <span class="sc">%&gt;%</span></span>
+<span id="cb4-17"><a href="hud-data.html#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Year <span class="sc">==</span> <span class="dv">2019</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-18"><a href="hud-data.html#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">everything</span>(), <span class="sc">-</span>Year)</span>
+<span id="cb4-19"><a href="hud-data.html#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-20"><a href="hud-data.html#cb4-20" aria-hidden="true" tabindex="-1"></a>CoC_Awards2019 <span class="ot">&lt;-</span> CoC_Awards <span class="sc">%&gt;%</span></span>
+<span id="cb4-21"><a href="hud-data.html#cb4-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Year <span class="sc">==</span> <span class="dv">2019</span>) </span>
+<span id="cb4-22"><a href="hud-data.html#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-23"><a href="hud-data.html#cb4-23" aria-hidden="true" tabindex="-1"></a>Trend_Data2019 <span class="ot">&lt;-</span> PIT_Chronic_Data2019 <span class="sc">%&gt;%</span></span>
+<span id="cb4-24"><a href="hud-data.html#cb4-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(CoC_Awards2019, <span class="at">by =</span> <span class="st">&quot;State&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-25"><a href="hud-data.html#cb4-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(Year, <span class="fu">everything</span>())</span>
+<span id="cb4-26"><a href="hud-data.html#cb4-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-27"><a href="hud-data.html#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking matches between datasets</span></span>
+<span id="cb4-28"><a href="hud-data.html#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="co"># PIT_Chronic_Data2019 %&gt;%</span></span>
+<span id="cb4-29"><a href="hud-data.html#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="co">#  anti_join(CoC_Awards2019, by = &quot;State&quot;)</span></span>
+<span id="cb4-30"><a href="hud-data.html#cb4-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-31"><a href="hud-data.html#cb4-31" aria-hidden="true" tabindex="-1"></a>PIT_Chronic_Data2018 <span class="ot">&lt;-</span> PIT_Chronic_Data <span class="sc">%&gt;%</span></span>
+<span id="cb4-32"><a href="hud-data.html#cb4-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Year <span class="sc">==</span> <span class="dv">2018</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-33"><a href="hud-data.html#cb4-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">everything</span>(), <span class="sc">-</span>Year)</span>
+<span id="cb4-34"><a href="hud-data.html#cb4-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-35"><a href="hud-data.html#cb4-35" aria-hidden="true" tabindex="-1"></a>CoC_Awards2018 <span class="ot">&lt;-</span> CoC_Awards <span class="sc">%&gt;%</span></span>
+<span id="cb4-36"><a href="hud-data.html#cb4-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Year <span class="sc">==</span> <span class="dv">2018</span>) </span>
+<span id="cb4-37"><a href="hud-data.html#cb4-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-38"><a href="hud-data.html#cb4-38" aria-hidden="true" tabindex="-1"></a>Trend_Data2018 <span class="ot">&lt;-</span> PIT_Chronic_Data2018 <span class="sc">%&gt;%</span></span>
+<span id="cb4-39"><a href="hud-data.html#cb4-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(CoC_Awards2018, <span class="at">by =</span> <span class="st">&quot;State&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-40"><a href="hud-data.html#cb4-40" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(Year, <span class="fu">everything</span>())</span>
+<span id="cb4-41"><a href="hud-data.html#cb4-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-42"><a href="hud-data.html#cb4-42" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking matches between datasets</span></span>
+<span id="cb4-43"><a href="hud-data.html#cb4-43" aria-hidden="true" tabindex="-1"></a><span class="co"># PIT_Chronic_Data2018 %&gt;%</span></span>
+<span id="cb4-44"><a href="hud-data.html#cb4-44" aria-hidden="true" tabindex="-1"></a><span class="co">#  anti_join(CoC_Awards2018, by = &quot;State&quot;)</span></span>
+<span id="cb4-45"><a href="hud-data.html#cb4-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-46"><a href="hud-data.html#cb4-46" aria-hidden="true" tabindex="-1"></a>PIT_Chronic_Data2017 <span class="ot">&lt;-</span> PIT_Chronic_Data <span class="sc">%&gt;%</span></span>
+<span id="cb4-47"><a href="hud-data.html#cb4-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Year <span class="sc">==</span> <span class="dv">2017</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-48"><a href="hud-data.html#cb4-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">everything</span>(), <span class="sc">-</span>Year)</span>
+<span id="cb4-49"><a href="hud-data.html#cb4-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-50"><a href="hud-data.html#cb4-50" aria-hidden="true" tabindex="-1"></a>CoC_Awards2017 <span class="ot">&lt;-</span> CoC_Awards <span class="sc">%&gt;%</span></span>
+<span id="cb4-51"><a href="hud-data.html#cb4-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Year <span class="sc">==</span> <span class="dv">2017</span>) </span>
+<span id="cb4-52"><a href="hud-data.html#cb4-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-53"><a href="hud-data.html#cb4-53" aria-hidden="true" tabindex="-1"></a>Trend_Data2017 <span class="ot">&lt;-</span> PIT_Chronic_Data2017 <span class="sc">%&gt;%</span></span>
+<span id="cb4-54"><a href="hud-data.html#cb4-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(CoC_Awards2017, <span class="at">by =</span> <span class="st">&quot;State&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-55"><a href="hud-data.html#cb4-55" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(Year, <span class="fu">everything</span>())</span>
+<span id="cb4-56"><a href="hud-data.html#cb4-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-57"><a href="hud-data.html#cb4-57" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking matches between datasets</span></span>
+<span id="cb4-58"><a href="hud-data.html#cb4-58" aria-hidden="true" tabindex="-1"></a><span class="co"># PIT_Chronic_Data2017 %&gt;%</span></span>
+<span id="cb4-59"><a href="hud-data.html#cb4-59" aria-hidden="true" tabindex="-1"></a><span class="co">#  anti_join(CoC_Awards2017, by = &quot;State&quot;)</span></span>
+<span id="cb4-60"><a href="hud-data.html#cb4-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-61"><a href="hud-data.html#cb4-61" aria-hidden="true" tabindex="-1"></a>PIT_Chronic_Data2016 <span class="ot">&lt;-</span> PIT_Chronic_Data <span class="sc">%&gt;%</span></span>
+<span id="cb4-62"><a href="hud-data.html#cb4-62" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Year <span class="sc">==</span> <span class="dv">2016</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-63"><a href="hud-data.html#cb4-63" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">everything</span>(), <span class="sc">-</span>Year)</span>
+<span id="cb4-64"><a href="hud-data.html#cb4-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-65"><a href="hud-data.html#cb4-65" aria-hidden="true" tabindex="-1"></a>CoC_Awards2016 <span class="ot">&lt;-</span> CoC_Awards <span class="sc">%&gt;%</span></span>
+<span id="cb4-66"><a href="hud-data.html#cb4-66" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Year <span class="sc">==</span> <span class="dv">2016</span>) </span>
+<span id="cb4-67"><a href="hud-data.html#cb4-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-68"><a href="hud-data.html#cb4-68" aria-hidden="true" tabindex="-1"></a>Trend_Data2016 <span class="ot">&lt;-</span> PIT_Chronic_Data2016 <span class="sc">%&gt;%</span></span>
+<span id="cb4-69"><a href="hud-data.html#cb4-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(CoC_Awards2016, <span class="at">by =</span> <span class="st">&quot;State&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-70"><a href="hud-data.html#cb4-70" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(Year, <span class="fu">everything</span>())</span>
+<span id="cb4-71"><a href="hud-data.html#cb4-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-72"><a href="hud-data.html#cb4-72" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking matches between datasets</span></span>
+<span id="cb4-73"><a href="hud-data.html#cb4-73" aria-hidden="true" tabindex="-1"></a><span class="co"># PIT_Chronic_Data2016 %&gt;%</span></span>
+<span id="cb4-74"><a href="hud-data.html#cb4-74" aria-hidden="true" tabindex="-1"></a><span class="co">#  anti_join(CoC_Awards2016, by = &quot;State&quot;)</span></span>
+<span id="cb4-75"><a href="hud-data.html#cb4-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-76"><a href="hud-data.html#cb4-76" aria-hidden="true" tabindex="-1"></a>PIT_Chronic_Data2015 <span class="ot">&lt;-</span> PIT_Chronic_Data <span class="sc">%&gt;%</span></span>
+<span id="cb4-77"><a href="hud-data.html#cb4-77" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Year <span class="sc">==</span> <span class="dv">2015</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-78"><a href="hud-data.html#cb4-78" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">everything</span>(), <span class="sc">-</span>Year)</span>
+<span id="cb4-79"><a href="hud-data.html#cb4-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-80"><a href="hud-data.html#cb4-80" aria-hidden="true" tabindex="-1"></a>CoC_Awards2015 <span class="ot">&lt;-</span> CoC_Awards <span class="sc">%&gt;%</span></span>
+<span id="cb4-81"><a href="hud-data.html#cb4-81" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Year <span class="sc">==</span> <span class="dv">2015</span>) </span>
+<span id="cb4-82"><a href="hud-data.html#cb4-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-83"><a href="hud-data.html#cb4-83" aria-hidden="true" tabindex="-1"></a>Trend_Data2015 <span class="ot">&lt;-</span> PIT_Chronic_Data2015 <span class="sc">%&gt;%</span></span>
+<span id="cb4-84"><a href="hud-data.html#cb4-84" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(CoC_Awards2015, <span class="at">by =</span> <span class="st">&quot;State&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-85"><a href="hud-data.html#cb4-85" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(Year, <span class="fu">everything</span>())</span>
+<span id="cb4-86"><a href="hud-data.html#cb4-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-87"><a href="hud-data.html#cb4-87" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking matches between datasets</span></span>
+<span id="cb4-88"><a href="hud-data.html#cb4-88" aria-hidden="true" tabindex="-1"></a><span class="co"># PIT_Chronic_Data2015 %&gt;%</span></span>
+<span id="cb4-89"><a href="hud-data.html#cb4-89" aria-hidden="true" tabindex="-1"></a><span class="co">#  anti_join(CoC_Awards2015, by = &quot;State&quot;)</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="hud-data.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Joining Data</span></span>
+<span id="cb5-2"><a href="hud-data.html#cb5-2" aria-hidden="true" tabindex="-1"></a>Trend_Data <span class="ot">&lt;-</span> <span class="fu">rbind</span>(Trend_Data2015, Trend_Data2016)</span>
+<span id="cb5-3"><a href="hud-data.html#cb5-3" aria-hidden="true" tabindex="-1"></a>Trend_Data <span class="ot">&lt;-</span> <span class="fu">rbind</span>(Trend_Data, Trend_Data2017)</span>
+<span id="cb5-4"><a href="hud-data.html#cb5-4" aria-hidden="true" tabindex="-1"></a>Trend_Data <span class="ot">&lt;-</span> <span class="fu">rbind</span>(Trend_Data, Trend_Data2018)</span>
+<span id="cb5-5"><a href="hud-data.html#cb5-5" aria-hidden="true" tabindex="-1"></a>Trend_Data <span class="ot">&lt;-</span> <span class="fu">rbind</span>(Trend_Data, Trend_Data2019)</span>
+<span id="cb5-6"><a href="hud-data.html#cb5-6" aria-hidden="true" tabindex="-1"></a>Trend_Data <span class="ot">&lt;-</span> <span class="fu">rbind</span>(Trend_Data, Trend_Data2020)</span>
+<span id="cb5-7"><a href="hud-data.html#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="hud-data.html#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># get vector of TRUE and FALSE where FALSE indicates there&#39;s one or more NA</span></span>
+<span id="cb5-9"><a href="hud-data.html#cb5-9" aria-hidden="true" tabindex="-1"></a>noNAs <span class="ot">&lt;-</span> <span class="fu">complete.cases</span>(Trend_Data)</span>
+<span id="cb5-10"><a href="hud-data.html#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># sum(noNAs)</span></span>
+<span id="cb5-11"><a href="hud-data.html#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="do">## out of how many rows:</span></span>
+<span id="cb5-12"><a href="hud-data.html#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># nrow(noNAs)</span></span>
+<span id="cb5-13"><a href="hud-data.html#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="hud-data.html#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co"># keep rows without any NA</span></span>
+<span id="cb5-15"><a href="hud-data.html#cb5-15" aria-hidden="true" tabindex="-1"></a>Trend_Data <span class="ot">&lt;-</span> Trend_Data[noNAs,]</span>
+<span id="cb5-16"><a href="hud-data.html#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="hud-data.html#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Trend_Data %&gt;% count(State) %&gt;% filter(n &lt; 7)</span></span>
+<span id="cb5-18"><a href="hud-data.html#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="hud-data.html#cb5-19" aria-hidden="true" tabindex="-1"></a>Trend_Data <span class="ot">&lt;-</span> Trend_Data <span class="sc">%&gt;%</span></span>
+<span id="cb5-20"><a href="hud-data.html#cb5-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>(Trend_Data) <span class="sc">%&gt;%</span></span>
+<span id="cb5-21"><a href="hud-data.html#cb5-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(Year, State, <span class="st">`</span><span class="at">Award Amount</span><span class="st">`</span>, <span class="st">`</span><span class="at">Overall Homeless</span><span class="st">`</span>, <span class="st">`</span><span class="at">Sheltered Homeless</span><span class="st">`</span>, <span class="st">`</span><span class="at">Unsheltered Homeless</span><span class="st">`</span>, <span class="st">`</span><span class="at">Overall Chronically Homeless</span><span class="st">`</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="hud-data.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Export Trend_Data.csv file into pc and input MI and SUB variables manually due to HUD not making these two varaibles available in their datasets</span></span>
+<span id="cb6-2"><a href="hud-data.html#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="hud-data.html#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># write.csv(Trend_Data, &quot;Trend_Data.csv&quot;)</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="hud-data.html#cb7-1" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span> <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;Trend_Data.xlsx&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="hud-data.html#cb8-1" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span> <span class="ot">&lt;-</span> Trend_Data_2<span class="fl">.0</span> <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="hud-data.html#cb8-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">mutate</span>(<span class="at">Award_Pct_Change =</span> (<span class="st">`</span><span class="at">Award Amount</span><span class="st">`</span><span class="sc">/</span><span class="fu">lag</span>(<span class="st">`</span><span class="at">Award Amount</span><span class="st">`</span>) <span class="sc">-</span> <span class="dv">1</span>),</span>
+<span id="cb8-3"><a href="hud-data.html#cb8-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">PIT_Pct_Change =</span> (<span class="st">`</span><span class="at">Overall Homeless</span><span class="st">`</span><span class="sc">/</span><span class="fu">lag</span>(<span class="st">`</span><span class="at">Overall Homeless</span><span class="st">`</span>) <span class="sc">-</span> <span class="dv">1</span>),</span>
+<span id="cb8-4"><a href="hud-data.html#cb8-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">Per_Capita =</span> (<span class="st">`</span><span class="at">Award Amount</span><span class="st">`</span><span class="sc">/</span><span class="st">`</span><span class="at">Overall Homeless</span><span class="st">`</span>),</span>
+<span id="cb8-5"><a href="hud-data.html#cb8-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">PerCap_Pct_Change =</span> (Per_Capita<span class="sc">/</span><span class="fu">lag</span>(Per_Capita) <span class="sc">-</span> <span class="dv">1</span>),</span>
+<span id="cb8-6"><a href="hud-data.html#cb8-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">Chronic_Pct_Change =</span> (<span class="st">`</span><span class="at">Overall Chronically Homeless</span><span class="st">`</span><span class="sc">/</span><span class="fu">lag</span>(<span class="st">`</span><span class="at">Overall Chronically Homeless</span><span class="st">`</span>) <span class="sc">-</span> <span class="dv">1</span>),</span>
+<span id="cb8-7"><a href="hud-data.html#cb8-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">MI_Pct_Change =</span> (<span class="st">`</span><span class="at">Severely Mentally Ill</span><span class="st">`</span><span class="sc">/</span><span class="fu">lag</span>(<span class="st">`</span><span class="at">Severely Mentally Ill</span><span class="st">`</span>) <span class="sc">-</span> <span class="dv">1</span>),</span>
+<span id="cb8-8"><a href="hud-data.html#cb8-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">SUD_Pct_Change =</span> (<span class="st">`</span><span class="at">Chronic Substance Abuse</span><span class="st">`</span><span class="sc">/</span><span class="fu">lag</span>(<span class="st">`</span><span class="at">Chronic Substance Abuse</span><span class="st">`</span>) <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb8-9"><a href="hud-data.html#cb8-9" aria-hidden="true" tabindex="-1"></a>        ) </span>
+<span id="cb8-10"><a href="hud-data.html#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="hud-data.html#cb8-11" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_State <span class="ot">&lt;-</span> Trend_Data_2<span class="fl">.0</span> <span class="sc">%&gt;%</span></span>
+<span id="cb8-12"><a href="hud-data.html#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Award_Pct_Change =</span> <span class="fu">ifelse</span>(Year <span class="sc">==</span> <span class="st">&quot;2015&quot;</span>, <span class="st">&quot;0&quot;</span>, Award_Pct_Change),</span>
+<span id="cb8-13"><a href="hud-data.html#cb8-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">PIT_Pct_Change =</span> <span class="fu">ifelse</span>(Year <span class="sc">==</span> <span class="st">&quot;2015&quot;</span>, <span class="st">&quot;0&quot;</span>, PIT_Pct_Change),</span>
+<span id="cb8-14"><a href="hud-data.html#cb8-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">PerCap_Pct_Change =</span> <span class="fu">ifelse</span>(Year <span class="sc">==</span> <span class="st">&quot;2015&quot;</span>, <span class="st">&quot;0&quot;</span>, PerCap_Pct_Change),</span>
+<span id="cb8-15"><a href="hud-data.html#cb8-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">Chronic_Pct_Change =</span> <span class="fu">ifelse</span>(Year <span class="sc">==</span> <span class="st">&quot;2015&quot;</span>, <span class="st">&quot;0&quot;</span>, Chronic_Pct_Change),</span>
+<span id="cb8-16"><a href="hud-data.html#cb8-16" aria-hidden="true" tabindex="-1"></a>         <span class="at">MI_Pct_Change =</span> <span class="fu">ifelse</span>(Year <span class="sc">==</span> <span class="st">&quot;2015&quot;</span>, <span class="st">&quot;0&quot;</span>, MI_Pct_Change),</span>
+<span id="cb8-17"><a href="hud-data.html#cb8-17" aria-hidden="true" tabindex="-1"></a>         <span class="at">SUD_Pct_Change =</span> <span class="fu">ifelse</span>(Year <span class="sc">==</span> <span class="st">&quot;2015&quot;</span>, <span class="st">&quot;0&quot;</span>, SUD_Pct_Change)</span>
+<span id="cb8-18"><a href="hud-data.html#cb8-18" aria-hidden="true" tabindex="-1"></a>         ) <span class="sc">%&gt;%</span></span>
+<span id="cb8-19"><a href="hud-data.html#cb8-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Award_Pct_Change =</span> <span class="fu">as.numeric</span>(Award_Pct_Change),</span>
+<span id="cb8-20"><a href="hud-data.html#cb8-20" aria-hidden="true" tabindex="-1"></a>         <span class="at">PIT_Pct_Change =</span> <span class="fu">as.numeric</span>(PIT_Pct_Change),</span>
+<span id="cb8-21"><a href="hud-data.html#cb8-21" aria-hidden="true" tabindex="-1"></a>         <span class="at">PerCap_Pct_Change =</span> <span class="fu">as.numeric</span>(PerCap_Pct_Change),</span>
+<span id="cb8-22"><a href="hud-data.html#cb8-22" aria-hidden="true" tabindex="-1"></a>         <span class="at">Chronic_Pct_Change =</span> <span class="fu">as.numeric</span>(Chronic_Pct_Change),</span>
+<span id="cb8-23"><a href="hud-data.html#cb8-23" aria-hidden="true" tabindex="-1"></a>         <span class="at">MI_Pct_Change =</span> <span class="fu">as.numeric</span>(MI_Pct_Change),</span>
+<span id="cb8-24"><a href="hud-data.html#cb8-24" aria-hidden="true" tabindex="-1"></a>         <span class="at">SUD_Pct_Change =</span> <span class="fu">as.numeric</span>(SUD_Pct_Change)</span>
+<span id="cb8-25"><a href="hud-data.html#cb8-25" aria-hidden="true" tabindex="-1"></a>         )</span>
+<span id="cb8-26"><a href="hud-data.html#cb8-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-27"><a href="hud-data.html#cb8-27" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span> <span class="ot">&lt;-</span> Trend_Data_2<span class="fl">.0</span> <span class="sc">%&gt;%</span></span>
+<span id="cb8-28"><a href="hud-data.html#cb8-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Award_Pct_Change =</span> <span class="fu">ifelse</span>(Year <span class="sc">==</span> <span class="st">&quot;2015&quot;</span>, <span class="st">&quot;NA&quot;</span>, Award_Pct_Change),</span>
+<span id="cb8-29"><a href="hud-data.html#cb8-29" aria-hidden="true" tabindex="-1"></a>         <span class="at">PIT_Pct_Change =</span> <span class="fu">ifelse</span>(Year <span class="sc">==</span> <span class="st">&quot;2015&quot;</span>, <span class="st">&quot;NA&quot;</span>, PIT_Pct_Change),</span>
+<span id="cb8-30"><a href="hud-data.html#cb8-30" aria-hidden="true" tabindex="-1"></a>         <span class="at">PerCap_Pct_Change =</span> <span class="fu">ifelse</span>(Year <span class="sc">==</span> <span class="st">&quot;2015&quot;</span>, <span class="st">&quot;NA&quot;</span>, PerCap_Pct_Change),</span>
+<span id="cb8-31"><a href="hud-data.html#cb8-31" aria-hidden="true" tabindex="-1"></a>         <span class="at">Chronic_Pct_Change =</span> <span class="fu">ifelse</span>(Year <span class="sc">==</span> <span class="st">&quot;2015&quot;</span>, <span class="st">&quot;NA&quot;</span>, Chronic_Pct_Change),</span>
+<span id="cb8-32"><a href="hud-data.html#cb8-32" aria-hidden="true" tabindex="-1"></a>         <span class="at">MI_Pct_Change =</span> <span class="fu">ifelse</span>(Year <span class="sc">==</span> <span class="st">&quot;2015&quot;</span>, <span class="st">&quot;NA&quot;</span>, MI_Pct_Change),</span>
+<span id="cb8-33"><a href="hud-data.html#cb8-33" aria-hidden="true" tabindex="-1"></a>         <span class="at">SUD_Pct_Change =</span> <span class="fu">ifelse</span>(Year <span class="sc">==</span> <span class="st">&quot;2015&quot;</span>, <span class="st">&quot;NA&quot;</span>, SUD_Pct_Change)</span>
+<span id="cb8-34"><a href="hud-data.html#cb8-34" aria-hidden="true" tabindex="-1"></a>         ) <span class="sc">%&gt;%</span></span>
+<span id="cb8-35"><a href="hud-data.html#cb8-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Award_Pct_Change =</span> <span class="fu">as.numeric</span>(Award_Pct_Change),</span>
+<span id="cb8-36"><a href="hud-data.html#cb8-36" aria-hidden="true" tabindex="-1"></a>         <span class="at">PIT_Pct_Change =</span> <span class="fu">as.numeric</span>(PIT_Pct_Change),</span>
+<span id="cb8-37"><a href="hud-data.html#cb8-37" aria-hidden="true" tabindex="-1"></a>         <span class="at">PerCap_Pct_Change =</span> <span class="fu">as.numeric</span>(PerCap_Pct_Change),</span>
+<span id="cb8-38"><a href="hud-data.html#cb8-38" aria-hidden="true" tabindex="-1"></a>         <span class="at">Chronic_Pct_Change =</span> <span class="fu">as.numeric</span>(Chronic_Pct_Change),</span>
+<span id="cb8-39"><a href="hud-data.html#cb8-39" aria-hidden="true" tabindex="-1"></a>         <span class="at">MI_Pct_Change =</span> <span class="fu">as.numeric</span>(MI_Pct_Change),</span>
+<span id="cb8-40"><a href="hud-data.html#cb8-40" aria-hidden="true" tabindex="-1"></a>         <span class="at">SUD_Pct_Change =</span> <span class="fu">as.numeric</span>(SUD_Pct_Change)</span>
+<span id="cb8-41"><a href="hud-data.html#cb8-41" aria-hidden="true" tabindex="-1"></a>         )</span>
+<span id="cb8-42"><a href="hud-data.html#cb8-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-43"><a href="hud-data.html#cb8-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-44"><a href="hud-data.html#cb8-44" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span> <span class="ot">&lt;-</span> Trend_Data_2<span class="fl">.0</span> <span class="sc">%&gt;%</span></span>
+<span id="cb8-45"><a href="hud-data.html#cb8-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Year, State, <span class="st">`</span><span class="at">Award Amount</span><span class="st">`</span>, Award_Pct_Change, <span class="st">`</span><span class="at">Sheltered Homeless</span><span class="st">`</span>, <span class="st">`</span><span class="at">Unsheltered Homeless</span><span class="st">`</span>, <span class="st">`</span><span class="at">Overall Homeless</span><span class="st">`</span>, PIT_Pct_Change, Per_Capita, </span>
+<span id="cb8-46"><a href="hud-data.html#cb8-46" aria-hidden="true" tabindex="-1"></a>         PerCap_Pct_Change, <span class="st">`</span><span class="at">Overall Chronically Homeless</span><span class="st">`</span>, Chronic_Pct_Change, <span class="st">`</span><span class="at">Severely Mentally Ill</span><span class="st">`</span>, MI_Pct_Change, <span class="st">`</span><span class="at">Chronic Substance Abuse</span><span class="st">`</span>, SUD_Pct_Change)</span>
+<span id="cb8-47"><a href="hud-data.html#cb8-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-48"><a href="hud-data.html#cb8-48" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_State <span class="ot">&lt;-</span> Trend_Data_2<span class="fl">.0</span>_State <span class="sc">%&gt;%</span></span>
+<span id="cb8-49"><a href="hud-data.html#cb8-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Year, State, <span class="st">`</span><span class="at">Award Amount</span><span class="st">`</span>, Award_Pct_Change, <span class="st">`</span><span class="at">Sheltered Homeless</span><span class="st">`</span>, <span class="st">`</span><span class="at">Unsheltered Homeless</span><span class="st">`</span>, <span class="st">`</span><span class="at">Overall Homeless</span><span class="st">`</span>, PIT_Pct_Change, Per_Capita,</span>
+<span id="cb8-50"><a href="hud-data.html#cb8-50" aria-hidden="true" tabindex="-1"></a>         PerCap_Pct_Change, <span class="st">`</span><span class="at">Overall Chronically Homeless</span><span class="st">`</span>, Chronic_Pct_Change, <span class="st">`</span><span class="at">Severely Mentally Ill</span><span class="st">`</span>, MI_Pct_Change, <span class="st">`</span><span class="at">Chronic Substance Abuse</span><span class="st">`</span>, SUD_Pct_Change)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="hud-data.html#cb9-1" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Nation <span class="ot">&lt;-</span> Trend_Data_2<span class="fl">.0</span>_State <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="hud-data.html#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Year) <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="hud-data.html#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="st">`</span><span class="at">Award Amount</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">sum</span>(<span class="st">`</span><span class="at">Award Amount</span><span class="st">`</span>),</span>
+<span id="cb9-4"><a href="hud-data.html#cb9-4" aria-hidden="true" tabindex="-1"></a>              <span class="st">`</span><span class="at">Sheltered Homeless</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">sum</span>(<span class="st">`</span><span class="at">Sheltered Homeless</span><span class="st">`</span>), </span>
+<span id="cb9-5"><a href="hud-data.html#cb9-5" aria-hidden="true" tabindex="-1"></a>              <span class="st">`</span><span class="at">Unsheltered Homeless</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">sum</span>(<span class="st">`</span><span class="at">Unsheltered Homeless</span><span class="st">`</span>), </span>
+<span id="cb9-6"><a href="hud-data.html#cb9-6" aria-hidden="true" tabindex="-1"></a>              <span class="st">`</span><span class="at">Overall Homeless</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">sum</span>(<span class="st">`</span><span class="at">Overall Homeless</span><span class="st">`</span>), </span>
+<span id="cb9-7"><a href="hud-data.html#cb9-7" aria-hidden="true" tabindex="-1"></a>              <span class="st">`</span><span class="at">Overall Chronically Homeless</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">sum</span>(<span class="st">`</span><span class="at">Overall Chronically Homeless</span><span class="st">`</span>), </span>
+<span id="cb9-8"><a href="hud-data.html#cb9-8" aria-hidden="true" tabindex="-1"></a>              <span class="st">`</span><span class="at">Severely Mentally Ill</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">sum</span>(<span class="st">`</span><span class="at">Severely Mentally Ill</span><span class="st">`</span>), </span>
+<span id="cb9-9"><a href="hud-data.html#cb9-9" aria-hidden="true" tabindex="-1"></a>              <span class="st">`</span><span class="at">Chronic Substance Abuse</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">sum</span>(<span class="st">`</span><span class="at">Chronic Substance Abuse</span><span class="st">`</span>)</span>
+<span id="cb9-10"><a href="hud-data.html#cb9-10" aria-hidden="true" tabindex="-1"></a>              ) <span class="sc">%&gt;%</span></span>
+<span id="cb9-11"><a href="hud-data.html#cb9-11" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">Award_Pct_Change =</span> (<span class="st">`</span><span class="at">Award Amount</span><span class="st">`</span><span class="sc">/</span><span class="fu">lag</span>(<span class="st">`</span><span class="at">Award Amount</span><span class="st">`</span>) <span class="sc">-</span> <span class="dv">1</span>),</span>
+<span id="cb9-12"><a href="hud-data.html#cb9-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">PIT_Pct_Change =</span> (<span class="st">`</span><span class="at">Overall Homeless</span><span class="st">`</span><span class="sc">/</span><span class="fu">lag</span>(<span class="st">`</span><span class="at">Overall Homeless</span><span class="st">`</span>) <span class="sc">-</span> <span class="dv">1</span>),</span>
+<span id="cb9-13"><a href="hud-data.html#cb9-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">Per_Capita =</span> (<span class="st">`</span><span class="at">Award Amount</span><span class="st">`</span><span class="sc">/</span><span class="st">`</span><span class="at">Overall Homeless</span><span class="st">`</span>),</span>
+<span id="cb9-14"><a href="hud-data.html#cb9-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">Chronic_Pct_Change =</span> (<span class="st">`</span><span class="at">Overall Chronically Homeless</span><span class="st">`</span><span class="sc">/</span><span class="fu">lag</span>(<span class="st">`</span><span class="at">Overall Chronically Homeless</span><span class="st">`</span>) <span class="sc">-</span> <span class="dv">1</span>),</span>
+<span id="cb9-15"><a href="hud-data.html#cb9-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">MI_Pct_Change =</span> (<span class="st">`</span><span class="at">Severely Mentally Ill</span><span class="st">`</span><span class="sc">/</span><span class="fu">lag</span>(<span class="st">`</span><span class="at">Severely Mentally Ill</span><span class="st">`</span>) <span class="sc">-</span> <span class="dv">1</span>),</span>
+<span id="cb9-16"><a href="hud-data.html#cb9-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">SUD_Pct_Change =</span> (<span class="st">`</span><span class="at">Chronic Substance Abuse</span><span class="st">`</span><span class="sc">/</span><span class="fu">lag</span>(<span class="st">`</span><span class="at">Chronic Substance Abuse</span><span class="st">`</span>) <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb9-17"><a href="hud-data.html#cb9-17" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">%&gt;%</span></span>
+<span id="cb9-18"><a href="hud-data.html#cb9-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Year, <span class="st">`</span><span class="at">Award Amount</span><span class="st">`</span>, Award_Pct_Change, <span class="st">`</span><span class="at">Sheltered Homeless</span><span class="st">`</span>, <span class="st">`</span><span class="at">Unsheltered Homeless</span><span class="st">`</span>, <span class="st">`</span><span class="at">Overall Homeless</span><span class="st">`</span>, PIT_Pct_Change, Per_Capita, </span>
+<span id="cb9-19"><a href="hud-data.html#cb9-19" aria-hidden="true" tabindex="-1"></a>         <span class="st">`</span><span class="at">Overall Chronically Homeless</span><span class="st">`</span>, Chronic_Pct_Change, <span class="st">`</span><span class="at">Severely Mentally Ill</span><span class="st">`</span>, MI_Pct_Change, <span class="st">`</span><span class="at">Chronic Substance Abuse</span><span class="st">`</span>, SUD_Pct_Change)</span>
+<span id="cb9-20"><a href="hud-data.html#cb9-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-21"><a href="hud-data.html#cb9-21" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_State <span class="ot">&lt;-</span> Trend_Data_2<span class="fl">.0</span>_State <span class="sc">%&gt;%</span></span>
+<span id="cb9-22"><a href="hud-data.html#cb9-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(State) <span class="sc">%&gt;%</span></span>
+<span id="cb9-23"><a href="hud-data.html#cb9-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="st">`</span><span class="at">Award Amount</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">sum</span>(<span class="st">`</span><span class="at">Award Amount</span><span class="st">`</span>),</span>
+<span id="cb9-24"><a href="hud-data.html#cb9-24" aria-hidden="true" tabindex="-1"></a>              <span class="at">Award_Pct_Change =</span> <span class="fu">sum</span>(Award_Pct_Change),</span>
+<span id="cb9-25"><a href="hud-data.html#cb9-25" aria-hidden="true" tabindex="-1"></a>              <span class="at">PIT_Pct_Change =</span> <span class="fu">sum</span>(PIT_Pct_Change), </span>
+<span id="cb9-26"><a href="hud-data.html#cb9-26" aria-hidden="true" tabindex="-1"></a>              <span class="at">PerCap_Pct_Change =</span> <span class="fu">sum</span>(PerCap_Pct_Change),</span>
+<span id="cb9-27"><a href="hud-data.html#cb9-27" aria-hidden="true" tabindex="-1"></a>              <span class="at">Chronic_Pct_Change =</span> <span class="fu">sum</span>(Chronic_Pct_Change),</span>
+<span id="cb9-28"><a href="hud-data.html#cb9-28" aria-hidden="true" tabindex="-1"></a>              <span class="at">MI_Pct_Change=</span> <span class="fu">sum</span>(MI_Pct_Change),</span>
+<span id="cb9-29"><a href="hud-data.html#cb9-29" aria-hidden="true" tabindex="-1"></a>              <span class="at">SUD_Pct_Change =</span> <span class="fu">sum</span>(SUD_Pct_Change)</span>
+<span id="cb9-30"><a href="hud-data.html#cb9-30" aria-hidden="true" tabindex="-1"></a>              )</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="hud-data.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reformat columns for better visual output</span></span>
+<span id="cb10-2"><a href="hud-data.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding dollar sign and comma for separation </span></span>
+<span id="cb10-3"><a href="hud-data.html#cb10-3" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span><span class="sc">$</span><span class="st">`</span><span class="at">Award Amount</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">currency</span>(Trend_Data_2<span class="fl">.0</span><span class="sc">$</span><span class="st">`</span><span class="at">Award Amount</span><span class="st">`</span>, <span class="at">digits =</span> 0L)</span>
+<span id="cb10-4"><a href="hud-data.html#cb10-4" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span><span class="sc">$</span>Per_Capita <span class="ot">&lt;-</span> <span class="fu">currency</span>(Trend_Data_2<span class="fl">.0</span><span class="sc">$</span>Per_Capita, <span class="at">digits =</span> 2L)</span>
+<span id="cb10-5"><a href="hud-data.html#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding percentage sign</span></span>
+<span id="cb10-6"><a href="hud-data.html#cb10-6" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span><span class="sc">$</span>Award_Pct_Change <span class="ot">&lt;-</span> <span class="fu">percent</span>(Trend_Data_2<span class="fl">.0</span><span class="sc">$</span>Award_Pct_Change, <span class="at">digits =</span> 2L)</span>
+<span id="cb10-7"><a href="hud-data.html#cb10-7" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span><span class="sc">$</span>PIT_Pct_Change <span class="ot">&lt;-</span> <span class="fu">percent</span>(Trend_Data_2<span class="fl">.0</span><span class="sc">$</span>PIT_Pct_Change, <span class="at">digits =</span> 2L)</span>
+<span id="cb10-8"><a href="hud-data.html#cb10-8" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span><span class="sc">$</span>PerCap_Pct_Change <span class="ot">&lt;-</span> <span class="fu">percent</span>(Trend_Data_2<span class="fl">.0</span><span class="sc">$</span>PerCap_Pct_Change, <span class="at">digits =</span> 2L)</span>
+<span id="cb10-9"><a href="hud-data.html#cb10-9" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span><span class="sc">$</span>Chronic_Pct_Change <span class="ot">&lt;-</span> <span class="fu">percent</span>(Trend_Data_2<span class="fl">.0</span><span class="sc">$</span>Chronic_Pct_Change, <span class="at">digits =</span> 2L)</span>
+<span id="cb10-10"><a href="hud-data.html#cb10-10" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span><span class="sc">$</span>MI_Pct_Change <span class="ot">&lt;-</span> <span class="fu">percent</span>(Trend_Data_2<span class="fl">.0</span><span class="sc">$</span>MI_Pct_Change, <span class="at">digits =</span> 2L)</span>
+<span id="cb10-11"><a href="hud-data.html#cb10-11" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span><span class="sc">$</span>SUD_Pct_Change <span class="ot">&lt;-</span> <span class="fu">percent</span>(Trend_Data_2<span class="fl">.0</span><span class="sc">$</span>SUD_Pct_Change, <span class="at">digits =</span> 2L)</span>
+<span id="cb10-12"><a href="hud-data.html#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding comma sign for digits separation every 3 units</span></span>
+<span id="cb10-13"><a href="hud-data.html#cb10-13" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span><span class="sc">$</span><span class="st">`</span><span class="at">Sheltered Homeless</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">format</span>(Trend_Data_2<span class="fl">.0</span><span class="sc">$</span><span class="st">`</span><span class="at">Sheltered Homeless</span><span class="st">`</span>,<span class="at">big.mark=</span><span class="st">&quot;,&quot;</span>, <span class="at">trim=</span><span class="cn">TRUE</span>)</span>
+<span id="cb10-14"><a href="hud-data.html#cb10-14" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span><span class="sc">$</span><span class="st">`</span><span class="at">Unsheltered Homeless</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">format</span>(Trend_Data_2<span class="fl">.0</span><span class="sc">$</span><span class="st">`</span><span class="at">Unsheltered Homeless</span><span class="st">`</span>,<span class="at">big.mark=</span><span class="st">&quot;,&quot;</span>, <span class="at">trim=</span><span class="cn">TRUE</span>)</span>
+<span id="cb10-15"><a href="hud-data.html#cb10-15" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span><span class="sc">$</span><span class="st">`</span><span class="at">Overall Homeless</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">format</span>(Trend_Data_2<span class="fl">.0</span><span class="sc">$</span><span class="st">`</span><span class="at">Overall Homeless</span><span class="st">`</span>,<span class="at">big.mark=</span><span class="st">&quot;,&quot;</span>, <span class="at">trim=</span><span class="cn">TRUE</span>)</span>
+<span id="cb10-16"><a href="hud-data.html#cb10-16" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span><span class="sc">$</span><span class="st">`</span><span class="at">Overall Chronically Homeless</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">format</span>(Trend_Data_2<span class="fl">.0</span><span class="sc">$</span><span class="st">`</span><span class="at">Overall Chronically Homeless</span><span class="st">`</span>,<span class="at">big.mark=</span><span class="st">&quot;,&quot;</span>, <span class="at">trim=</span><span class="cn">TRUE</span>)</span>
+<span id="cb10-17"><a href="hud-data.html#cb10-17" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span><span class="sc">$</span><span class="st">`</span><span class="at">Severely Mentally Ill</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">format</span>(Trend_Data_2<span class="fl">.0</span><span class="sc">$</span><span class="st">`</span><span class="at">Severely Mentally Ill</span><span class="st">`</span>,<span class="at">big.mark=</span><span class="st">&quot;,&quot;</span>, <span class="at">trim=</span><span class="cn">TRUE</span>)</span>
+<span id="cb10-18"><a href="hud-data.html#cb10-18" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span><span class="sc">$</span><span class="st">`</span><span class="at">Chronic Substance Abuse</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">format</span>(Trend_Data_2<span class="fl">.0</span><span class="sc">$</span><span class="st">`</span><span class="at">Chronic Substance Abuse</span><span class="st">`</span>,<span class="at">big.mark=</span><span class="st">&quot;,&quot;</span>, <span class="at">trim=</span><span class="cn">TRUE</span>)</span>
+<span id="cb10-19"><a href="hud-data.html#cb10-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-20"><a href="hud-data.html#cb10-20" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Nation<span class="sc">$</span><span class="st">`</span><span class="at">Award Amount</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">currency</span>(Trend_Data_2<span class="fl">.0</span>_Nation<span class="sc">$</span><span class="st">`</span><span class="at">Award Amount</span><span class="st">`</span>, <span class="at">digits =</span> 0L)</span>
+<span id="cb10-21"><a href="hud-data.html#cb10-21" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Nation<span class="sc">$</span>Per_Capita <span class="ot">&lt;-</span> <span class="fu">currency</span>(Trend_Data_2<span class="fl">.0</span>_Nation<span class="sc">$</span>Per_Capita, <span class="at">digits =</span> 2L)</span>
+<span id="cb10-22"><a href="hud-data.html#cb10-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-23"><a href="hud-data.html#cb10-23" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Nation<span class="sc">$</span>Award_Pct_Change <span class="ot">&lt;-</span> <span class="fu">percent</span>(Trend_Data_2<span class="fl">.0</span>_Nation<span class="sc">$</span>Award_Pct_Change, <span class="at">digits =</span> 2L)</span>
+<span id="cb10-24"><a href="hud-data.html#cb10-24" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Nation<span class="sc">$</span>PIT_Pct_Change <span class="ot">&lt;-</span> <span class="fu">percent</span>(Trend_Data_2<span class="fl">.0</span>_Nation<span class="sc">$</span>PIT_Pct_Change, <span class="at">digits =</span> 2L)</span>
+<span id="cb10-25"><a href="hud-data.html#cb10-25" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Nation<span class="sc">$</span>Chronic_Pct_Change <span class="ot">&lt;-</span> <span class="fu">percent</span>(Trend_Data_2<span class="fl">.0</span>_Nation<span class="sc">$</span>Chronic_Pct_Change, <span class="at">digits =</span> 2L)</span>
+<span id="cb10-26"><a href="hud-data.html#cb10-26" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Nation<span class="sc">$</span>MI_Pct_Change <span class="ot">&lt;-</span> <span class="fu">percent</span>(Trend_Data_2<span class="fl">.0</span>_Nation<span class="sc">$</span>MI_Pct_Change, <span class="at">digits =</span> 2L)</span>
+<span id="cb10-27"><a href="hud-data.html#cb10-27" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Nation<span class="sc">$</span>SUD_Pct_Change <span class="ot">&lt;-</span> <span class="fu">percent</span>(Trend_Data_2<span class="fl">.0</span>_Nation<span class="sc">$</span>SUD_Pct_Change, <span class="at">digits =</span> 2L)</span>
+<span id="cb10-28"><a href="hud-data.html#cb10-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-29"><a href="hud-data.html#cb10-29" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Nation<span class="sc">$</span><span class="st">`</span><span class="at">Sheltered Homeless</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">format</span>(Trend_Data_2<span class="fl">.0</span>_Nation<span class="sc">$</span><span class="st">`</span><span class="at">Sheltered Homeless</span><span class="st">`</span>,<span class="at">big.mark=</span><span class="st">&quot;,&quot;</span>, <span class="at">trim=</span><span class="cn">TRUE</span>)</span>
+<span id="cb10-30"><a href="hud-data.html#cb10-30" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Nation<span class="sc">$</span><span class="st">`</span><span class="at">Unsheltered Homeless</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">format</span>(Trend_Data_2<span class="fl">.0</span>_Nation<span class="sc">$</span><span class="st">`</span><span class="at">Unsheltered Homeless</span><span class="st">`</span>,<span class="at">big.mark=</span><span class="st">&quot;,&quot;</span>, <span class="at">trim=</span><span class="cn">TRUE</span>)</span>
+<span id="cb10-31"><a href="hud-data.html#cb10-31" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Nation<span class="sc">$</span><span class="st">`</span><span class="at">Overall Homeless</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">format</span>(Trend_Data_2<span class="fl">.0</span>_Nation<span class="sc">$</span><span class="st">`</span><span class="at">Overall Homeless</span><span class="st">`</span>,<span class="at">big.mark=</span><span class="st">&quot;,&quot;</span>, <span class="at">trim=</span><span class="cn">TRUE</span>)</span>
+<span id="cb10-32"><a href="hud-data.html#cb10-32" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Nation<span class="sc">$</span><span class="st">`</span><span class="at">Overall Chronically Homeless</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">format</span>(Trend_Data_2<span class="fl">.0</span>_Nation<span class="sc">$</span><span class="st">`</span><span class="at">Overall Chronically Homeless</span><span class="st">`</span>,<span class="at">big.mark=</span><span class="st">&quot;,&quot;</span>, <span class="at">trim=</span><span class="cn">TRUE</span>)</span>
+<span id="cb10-33"><a href="hud-data.html#cb10-33" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Nation<span class="sc">$</span><span class="st">`</span><span class="at">Severely Mentally Ill</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">format</span>(Trend_Data_2<span class="fl">.0</span>_Nation<span class="sc">$</span><span class="st">`</span><span class="at">Severely Mentally Ill</span><span class="st">`</span>,<span class="at">big.mark=</span><span class="st">&quot;,&quot;</span>, <span class="at">trim=</span><span class="cn">TRUE</span>)</span>
+<span id="cb10-34"><a href="hud-data.html#cb10-34" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Nation<span class="sc">$</span><span class="st">`</span><span class="at">Chronic Substance Abuse</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">format</span>(Trend_Data_2<span class="fl">.0</span>_Nation<span class="sc">$</span><span class="st">`</span><span class="at">Chronic Substance Abuse</span><span class="st">`</span>,<span class="at">big.mark=</span><span class="st">&quot;,&quot;</span>, <span class="at">trim=</span><span class="cn">TRUE</span>)</span>
+<span id="cb10-35"><a href="hud-data.html#cb10-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-36"><a href="hud-data.html#cb10-36" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_State<span class="sc">$</span><span class="st">`</span><span class="at">Award Amount</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">currency</span>(Trend_Data_2<span class="fl">.0</span>_State<span class="sc">$</span><span class="st">`</span><span class="at">Award Amount</span><span class="st">`</span>, <span class="at">digits =</span> 0L)</span>
+<span id="cb10-37"><a href="hud-data.html#cb10-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-38"><a href="hud-data.html#cb10-38" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_State<span class="sc">$</span>Award_Pct_Change <span class="ot">&lt;-</span> <span class="fu">percent</span>(Trend_Data_2<span class="fl">.0</span>_State<span class="sc">$</span>Award_Pct_Change, <span class="at">digits =</span> 2L)</span>
+<span id="cb10-39"><a href="hud-data.html#cb10-39" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_State<span class="sc">$</span>PIT_Pct_Change <span class="ot">&lt;-</span> <span class="fu">percent</span>(Trend_Data_2<span class="fl">.0</span>_State<span class="sc">$</span>PIT_Pct_Change, <span class="at">digits =</span> 2L)</span>
+<span id="cb10-40"><a href="hud-data.html#cb10-40" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_State<span class="sc">$</span>PerCap_Pct_Change <span class="ot">&lt;-</span> <span class="fu">percent</span>(Trend_Data_2<span class="fl">.0</span>_State<span class="sc">$</span>PerCap_Pct_Change, <span class="at">digits =</span> 2L)</span>
+<span id="cb10-41"><a href="hud-data.html#cb10-41" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_State<span class="sc">$</span>Chronic_Pct_Change <span class="ot">&lt;-</span> <span class="fu">percent</span>(Trend_Data_2<span class="fl">.0</span>_State<span class="sc">$</span>Chronic_Pct_Change, <span class="at">digits =</span> 2L)</span>
+<span id="cb10-42"><a href="hud-data.html#cb10-42" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_State<span class="sc">$</span>MI_Pct_Change <span class="ot">&lt;-</span> <span class="fu">percent</span>(Trend_Data_2<span class="fl">.0</span>_State<span class="sc">$</span>MI_Pct_Change, <span class="at">digits =</span> 2L)</span>
+<span id="cb10-43"><a href="hud-data.html#cb10-43" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_State<span class="sc">$</span>SUD_Pct_Change <span class="ot">&lt;-</span> <span class="fu">percent</span>(Trend_Data_2<span class="fl">.0</span>_State<span class="sc">$</span>SUD_Pct_Change, <span class="at">digits =</span> 2L)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="hud-data.html#cb11-1" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Înflation <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;Trend_Data_Inflation.xlsx&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="hud-data.html#cb12-1" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Înflation <span class="ot">&lt;-</span> Trend_Data_2<span class="fl">.0</span>_Înflation <span class="sc">%&gt;%</span></span>
+<span id="cb12-2"><a href="hud-data.html#cb12-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">mutate</span>(<span class="at">Award_Pct_Change =</span> (<span class="st">`</span><span class="at">Award (2015 $)</span><span class="st">`</span><span class="sc">/</span><span class="fu">lag</span>(<span class="st">`</span><span class="at">Award (2015 $)</span><span class="st">`</span>) <span class="sc">-</span> <span class="dv">1</span>),</span>
+<span id="cb12-3"><a href="hud-data.html#cb12-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">PIT_Pct_Change =</span> (<span class="st">`</span><span class="at">Overall Homeless</span><span class="st">`</span><span class="sc">/</span><span class="fu">lag</span>(<span class="st">`</span><span class="at">Overall Homeless</span><span class="st">`</span>) <span class="sc">-</span> <span class="dv">1</span>),</span>
+<span id="cb12-4"><a href="hud-data.html#cb12-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">Per_Capita =</span> (<span class="st">`</span><span class="at">Award (2015 $)</span><span class="st">`</span><span class="sc">/</span><span class="st">`</span><span class="at">Overall Homeless</span><span class="st">`</span>),</span>
+<span id="cb12-5"><a href="hud-data.html#cb12-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">PerCap_Pct_Change =</span> (Per_Capita<span class="sc">/</span><span class="fu">lag</span>(Per_Capita) <span class="sc">-</span> <span class="dv">1</span>),</span>
+<span id="cb12-6"><a href="hud-data.html#cb12-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">Chronic_Pct_Change =</span> (<span class="st">`</span><span class="at">Overall Chronically Homeless</span><span class="st">`</span><span class="sc">/</span><span class="fu">lag</span>(<span class="st">`</span><span class="at">Overall Chronically Homeless</span><span class="st">`</span>) <span class="sc">-</span> <span class="dv">1</span>),</span>
+<span id="cb12-7"><a href="hud-data.html#cb12-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">MI_Pct_Change =</span> (<span class="st">`</span><span class="at">Severely Mentally Ill</span><span class="st">`</span><span class="sc">/</span><span class="fu">lag</span>(<span class="st">`</span><span class="at">Severely Mentally Ill</span><span class="st">`</span>) <span class="sc">-</span> <span class="dv">1</span>),</span>
+<span id="cb12-8"><a href="hud-data.html#cb12-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">SUD_Pct_Change =</span> (<span class="st">`</span><span class="at">Chronic Substance Abuse</span><span class="st">`</span><span class="sc">/</span><span class="fu">lag</span>(<span class="st">`</span><span class="at">Chronic Substance Abuse</span><span class="st">`</span>) <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb12-9"><a href="hud-data.html#cb12-9" aria-hidden="true" tabindex="-1"></a>        ) </span>
+<span id="cb12-10"><a href="hud-data.html#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-11"><a href="hud-data.html#cb12-11" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Inflation_State <span class="ot">&lt;-</span> Trend_Data_2<span class="fl">.0</span>_Înflation <span class="sc">%&gt;%</span></span>
+<span id="cb12-12"><a href="hud-data.html#cb12-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Award_Pct_Change =</span> <span class="fu">ifelse</span>(Year <span class="sc">==</span> <span class="st">&quot;2015&quot;</span>, <span class="st">&quot;0&quot;</span>, Award_Pct_Change),</span>
+<span id="cb12-13"><a href="hud-data.html#cb12-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">PIT_Pct_Change =</span> <span class="fu">ifelse</span>(Year <span class="sc">==</span> <span class="st">&quot;2015&quot;</span>, <span class="st">&quot;0&quot;</span>, PIT_Pct_Change),</span>
+<span id="cb12-14"><a href="hud-data.html#cb12-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">PerCap_Pct_Change =</span> <span class="fu">ifelse</span>(Year <span class="sc">==</span> <span class="st">&quot;2015&quot;</span>, <span class="st">&quot;0&quot;</span>, PerCap_Pct_Change),</span>
+<span id="cb12-15"><a href="hud-data.html#cb12-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">Chronic_Pct_Change =</span> <span class="fu">ifelse</span>(Year <span class="sc">==</span> <span class="st">&quot;2015&quot;</span>, <span class="st">&quot;0&quot;</span>, Chronic_Pct_Change),</span>
+<span id="cb12-16"><a href="hud-data.html#cb12-16" aria-hidden="true" tabindex="-1"></a>         <span class="at">MI_Pct_Change =</span> <span class="fu">ifelse</span>(Year <span class="sc">==</span> <span class="st">&quot;2015&quot;</span>, <span class="st">&quot;0&quot;</span>, MI_Pct_Change),</span>
+<span id="cb12-17"><a href="hud-data.html#cb12-17" aria-hidden="true" tabindex="-1"></a>         <span class="at">SUD_Pct_Change =</span> <span class="fu">ifelse</span>(Year <span class="sc">==</span> <span class="st">&quot;2015&quot;</span>, <span class="st">&quot;0&quot;</span>, SUD_Pct_Change)</span>
+<span id="cb12-18"><a href="hud-data.html#cb12-18" aria-hidden="true" tabindex="-1"></a>         ) <span class="sc">%&gt;%</span></span>
+<span id="cb12-19"><a href="hud-data.html#cb12-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Award_Pct_Change =</span> <span class="fu">as.numeric</span>(Award_Pct_Change),</span>
+<span id="cb12-20"><a href="hud-data.html#cb12-20" aria-hidden="true" tabindex="-1"></a>         <span class="at">PIT_Pct_Change =</span> <span class="fu">as.numeric</span>(PIT_Pct_Change),</span>
+<span id="cb12-21"><a href="hud-data.html#cb12-21" aria-hidden="true" tabindex="-1"></a>         <span class="at">PerCap_Pct_Change =</span> <span class="fu">as.numeric</span>(PerCap_Pct_Change),</span>
+<span id="cb12-22"><a href="hud-data.html#cb12-22" aria-hidden="true" tabindex="-1"></a>         <span class="at">Chronic_Pct_Change =</span> <span class="fu">as.numeric</span>(Chronic_Pct_Change),</span>
+<span id="cb12-23"><a href="hud-data.html#cb12-23" aria-hidden="true" tabindex="-1"></a>         <span class="at">MI_Pct_Change =</span> <span class="fu">as.numeric</span>(MI_Pct_Change),</span>
+<span id="cb12-24"><a href="hud-data.html#cb12-24" aria-hidden="true" tabindex="-1"></a>         <span class="at">SUD_Pct_Change =</span> <span class="fu">as.numeric</span>(SUD_Pct_Change)</span>
+<span id="cb12-25"><a href="hud-data.html#cb12-25" aria-hidden="true" tabindex="-1"></a>         )</span>
+<span id="cb12-26"><a href="hud-data.html#cb12-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-27"><a href="hud-data.html#cb12-27" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Înflation <span class="ot">&lt;-</span> Trend_Data_2<span class="fl">.0</span>_Înflation <span class="sc">%&gt;%</span></span>
+<span id="cb12-28"><a href="hud-data.html#cb12-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Award_Pct_Change =</span> <span class="fu">ifelse</span>(Year <span class="sc">==</span> <span class="st">&quot;2015&quot;</span>, <span class="st">&quot;NA&quot;</span>, Award_Pct_Change),</span>
+<span id="cb12-29"><a href="hud-data.html#cb12-29" aria-hidden="true" tabindex="-1"></a>         <span class="at">PIT_Pct_Change =</span> <span class="fu">ifelse</span>(Year <span class="sc">==</span> <span class="st">&quot;2015&quot;</span>, <span class="st">&quot;NA&quot;</span>, PIT_Pct_Change),</span>
+<span id="cb12-30"><a href="hud-data.html#cb12-30" aria-hidden="true" tabindex="-1"></a>         <span class="at">PerCap_Pct_Change =</span> <span class="fu">ifelse</span>(Year <span class="sc">==</span> <span class="st">&quot;2015&quot;</span>, <span class="st">&quot;NA&quot;</span>, PerCap_Pct_Change),</span>
+<span id="cb12-31"><a href="hud-data.html#cb12-31" aria-hidden="true" tabindex="-1"></a>         <span class="at">Chronic_Pct_Change =</span> <span class="fu">ifelse</span>(Year <span class="sc">==</span> <span class="st">&quot;2015&quot;</span>, <span class="st">&quot;NA&quot;</span>, Chronic_Pct_Change),</span>
+<span id="cb12-32"><a href="hud-data.html#cb12-32" aria-hidden="true" tabindex="-1"></a>         <span class="at">MI_Pct_Change =</span> <span class="fu">ifelse</span>(Year <span class="sc">==</span> <span class="st">&quot;2015&quot;</span>, <span class="st">&quot;NA&quot;</span>, MI_Pct_Change),</span>
+<span id="cb12-33"><a href="hud-data.html#cb12-33" aria-hidden="true" tabindex="-1"></a>         <span class="at">SUD_Pct_Change =</span> <span class="fu">ifelse</span>(Year <span class="sc">==</span> <span class="st">&quot;2015&quot;</span>, <span class="st">&quot;NA&quot;</span>, SUD_Pct_Change)</span>
+<span id="cb12-34"><a href="hud-data.html#cb12-34" aria-hidden="true" tabindex="-1"></a>         ) <span class="sc">%&gt;%</span></span>
+<span id="cb12-35"><a href="hud-data.html#cb12-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Award_Pct_Change =</span> <span class="fu">as.numeric</span>(Award_Pct_Change),</span>
+<span id="cb12-36"><a href="hud-data.html#cb12-36" aria-hidden="true" tabindex="-1"></a>         <span class="at">PIT_Pct_Change =</span> <span class="fu">as.numeric</span>(PIT_Pct_Change),</span>
+<span id="cb12-37"><a href="hud-data.html#cb12-37" aria-hidden="true" tabindex="-1"></a>         <span class="at">PerCap_Pct_Change =</span> <span class="fu">as.numeric</span>(PerCap_Pct_Change),</span>
+<span id="cb12-38"><a href="hud-data.html#cb12-38" aria-hidden="true" tabindex="-1"></a>         <span class="at">Chronic_Pct_Change =</span> <span class="fu">as.numeric</span>(Chronic_Pct_Change),</span>
+<span id="cb12-39"><a href="hud-data.html#cb12-39" aria-hidden="true" tabindex="-1"></a>         <span class="at">MI_Pct_Change =</span> <span class="fu">as.numeric</span>(MI_Pct_Change),</span>
+<span id="cb12-40"><a href="hud-data.html#cb12-40" aria-hidden="true" tabindex="-1"></a>         <span class="at">SUD_Pct_Change =</span> <span class="fu">as.numeric</span>(SUD_Pct_Change)</span>
+<span id="cb12-41"><a href="hud-data.html#cb12-41" aria-hidden="true" tabindex="-1"></a>         )</span>
+<span id="cb12-42"><a href="hud-data.html#cb12-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-43"><a href="hud-data.html#cb12-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-44"><a href="hud-data.html#cb12-44" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Înflation <span class="ot">&lt;-</span> Trend_Data_2<span class="fl">.0</span>_Înflation <span class="sc">%&gt;%</span></span>
+<span id="cb12-45"><a href="hud-data.html#cb12-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Year, State, <span class="st">`</span><span class="at">Award (2015 $)</span><span class="st">`</span>, Award_Pct_Change, <span class="st">`</span><span class="at">Sheltered Homeless</span><span class="st">`</span>, <span class="st">`</span><span class="at">Unsheltered Homeless</span><span class="st">`</span>, <span class="st">`</span><span class="at">Overall Homeless</span><span class="st">`</span>, PIT_Pct_Change, Per_Capita, </span>
+<span id="cb12-46"><a href="hud-data.html#cb12-46" aria-hidden="true" tabindex="-1"></a>         PerCap_Pct_Change, <span class="st">`</span><span class="at">Overall Chronically Homeless</span><span class="st">`</span>, Chronic_Pct_Change, <span class="st">`</span><span class="at">Severely Mentally Ill</span><span class="st">`</span>, MI_Pct_Change, <span class="st">`</span><span class="at">Chronic Substance Abuse</span><span class="st">`</span>, SUD_Pct_Change)</span>
+<span id="cb12-47"><a href="hud-data.html#cb12-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-48"><a href="hud-data.html#cb12-48" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Inflation_State <span class="ot">&lt;-</span> Trend_Data_2<span class="fl">.0</span>_Inflation_State <span class="sc">%&gt;%</span></span>
+<span id="cb12-49"><a href="hud-data.html#cb12-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Year, State, <span class="st">`</span><span class="at">Award (2015 $)</span><span class="st">`</span>, Award_Pct_Change, <span class="st">`</span><span class="at">Sheltered Homeless</span><span class="st">`</span>, <span class="st">`</span><span class="at">Unsheltered Homeless</span><span class="st">`</span>, <span class="st">`</span><span class="at">Overall Homeless</span><span class="st">`</span>, PIT_Pct_Change, Per_Capita, </span>
+<span id="cb12-50"><a href="hud-data.html#cb12-50" aria-hidden="true" tabindex="-1"></a>         PerCap_Pct_Change, <span class="st">`</span><span class="at">Overall Chronically Homeless</span><span class="st">`</span>, Chronic_Pct_Change, <span class="st">`</span><span class="at">Severely Mentally Ill</span><span class="st">`</span>, MI_Pct_Change, <span class="st">`</span><span class="at">Chronic Substance Abuse</span><span class="st">`</span>, SUD_Pct_Change)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="hud-data.html#cb13-1" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Inflation_Nation <span class="ot">&lt;-</span> Trend_Data_2<span class="fl">.0</span>_Inflation_State <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="hud-data.html#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Year) <span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a href="hud-data.html#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="st">`</span><span class="at">Award (2015 $)</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">sum</span>(<span class="st">`</span><span class="at">Award (2015 $)</span><span class="st">`</span>),</span>
+<span id="cb13-4"><a href="hud-data.html#cb13-4" aria-hidden="true" tabindex="-1"></a>              <span class="st">`</span><span class="at">Sheltered Homeless</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">sum</span>(<span class="st">`</span><span class="at">Sheltered Homeless</span><span class="st">`</span>), </span>
+<span id="cb13-5"><a href="hud-data.html#cb13-5" aria-hidden="true" tabindex="-1"></a>              <span class="st">`</span><span class="at">Unsheltered Homeless</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">sum</span>(<span class="st">`</span><span class="at">Unsheltered Homeless</span><span class="st">`</span>), </span>
+<span id="cb13-6"><a href="hud-data.html#cb13-6" aria-hidden="true" tabindex="-1"></a>              <span class="st">`</span><span class="at">Overall Homeless</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">sum</span>(<span class="st">`</span><span class="at">Overall Homeless</span><span class="st">`</span>), </span>
+<span id="cb13-7"><a href="hud-data.html#cb13-7" aria-hidden="true" tabindex="-1"></a>              <span class="st">`</span><span class="at">Overall Chronically Homeless</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">sum</span>(<span class="st">`</span><span class="at">Overall Chronically Homeless</span><span class="st">`</span>), </span>
+<span id="cb13-8"><a href="hud-data.html#cb13-8" aria-hidden="true" tabindex="-1"></a>              <span class="st">`</span><span class="at">Severely Mentally Ill</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">sum</span>(<span class="st">`</span><span class="at">Severely Mentally Ill</span><span class="st">`</span>), </span>
+<span id="cb13-9"><a href="hud-data.html#cb13-9" aria-hidden="true" tabindex="-1"></a>              <span class="st">`</span><span class="at">Chronic Substance Abuse</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">sum</span>(<span class="st">`</span><span class="at">Chronic Substance Abuse</span><span class="st">`</span>)</span>
+<span id="cb13-10"><a href="hud-data.html#cb13-10" aria-hidden="true" tabindex="-1"></a>              ) <span class="sc">%&gt;%</span></span>
+<span id="cb13-11"><a href="hud-data.html#cb13-11" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">Award_Pct_Change =</span> (<span class="st">`</span><span class="at">Award (2015 $)</span><span class="st">`</span><span class="sc">/</span><span class="fu">lag</span>(<span class="st">`</span><span class="at">Award (2015 $)</span><span class="st">`</span>) <span class="sc">-</span> <span class="dv">1</span>),</span>
+<span id="cb13-12"><a href="hud-data.html#cb13-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">PIT_Pct_Change =</span> (<span class="st">`</span><span class="at">Overall Homeless</span><span class="st">`</span><span class="sc">/</span><span class="fu">lag</span>(<span class="st">`</span><span class="at">Overall Homeless</span><span class="st">`</span>) <span class="sc">-</span> <span class="dv">1</span>),</span>
+<span id="cb13-13"><a href="hud-data.html#cb13-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">Per_Capita =</span> (<span class="st">`</span><span class="at">Award (2015 $)</span><span class="st">`</span><span class="sc">/</span><span class="st">`</span><span class="at">Overall Homeless</span><span class="st">`</span>),</span>
+<span id="cb13-14"><a href="hud-data.html#cb13-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">Chronic_Pct_Change =</span> (<span class="st">`</span><span class="at">Overall Chronically Homeless</span><span class="st">`</span><span class="sc">/</span><span class="fu">lag</span>(<span class="st">`</span><span class="at">Overall Chronically Homeless</span><span class="st">`</span>) <span class="sc">-</span> <span class="dv">1</span>),</span>
+<span id="cb13-15"><a href="hud-data.html#cb13-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">MI_Pct_Change =</span> (<span class="st">`</span><span class="at">Severely Mentally Ill</span><span class="st">`</span><span class="sc">/</span><span class="fu">lag</span>(<span class="st">`</span><span class="at">Severely Mentally Ill</span><span class="st">`</span>) <span class="sc">-</span> <span class="dv">1</span>),</span>
+<span id="cb13-16"><a href="hud-data.html#cb13-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">SUD_Pct_Change =</span> (<span class="st">`</span><span class="at">Chronic Substance Abuse</span><span class="st">`</span><span class="sc">/</span><span class="fu">lag</span>(<span class="st">`</span><span class="at">Chronic Substance Abuse</span><span class="st">`</span>) <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb13-17"><a href="hud-data.html#cb13-17" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">%&gt;%</span></span>
+<span id="cb13-18"><a href="hud-data.html#cb13-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Year, <span class="st">`</span><span class="at">Award (2015 $)</span><span class="st">`</span>, Award_Pct_Change, <span class="st">`</span><span class="at">Sheltered Homeless</span><span class="st">`</span>, <span class="st">`</span><span class="at">Unsheltered Homeless</span><span class="st">`</span>, <span class="st">`</span><span class="at">Overall Homeless</span><span class="st">`</span>, PIT_Pct_Change, Per_Capita, </span>
+<span id="cb13-19"><a href="hud-data.html#cb13-19" aria-hidden="true" tabindex="-1"></a>         <span class="st">`</span><span class="at">Overall Chronically Homeless</span><span class="st">`</span>, Chronic_Pct_Change, <span class="st">`</span><span class="at">Severely Mentally Ill</span><span class="st">`</span>, MI_Pct_Change, <span class="st">`</span><span class="at">Chronic Substance Abuse</span><span class="st">`</span>, SUD_Pct_Change)</span>
+<span id="cb13-20"><a href="hud-data.html#cb13-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-21"><a href="hud-data.html#cb13-21" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Inflation_State <span class="ot">&lt;-</span> Trend_Data_2<span class="fl">.0</span>_Inflation_State <span class="sc">%&gt;%</span></span>
+<span id="cb13-22"><a href="hud-data.html#cb13-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(State) <span class="sc">%&gt;%</span></span>
+<span id="cb13-23"><a href="hud-data.html#cb13-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="st">`</span><span class="at">Award (2015 $)</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">sum</span>(<span class="st">`</span><span class="at">Award (2015 $)</span><span class="st">`</span>),</span>
+<span id="cb13-24"><a href="hud-data.html#cb13-24" aria-hidden="true" tabindex="-1"></a>              <span class="at">Award_Pct_Change =</span> <span class="fu">sum</span>(Award_Pct_Change),</span>
+<span id="cb13-25"><a href="hud-data.html#cb13-25" aria-hidden="true" tabindex="-1"></a>              <span class="at">PIT_Pct_Change =</span> <span class="fu">sum</span>(PIT_Pct_Change),</span>
+<span id="cb13-26"><a href="hud-data.html#cb13-26" aria-hidden="true" tabindex="-1"></a>              <span class="at">PerCap_Pct_Change =</span> <span class="fu">sum</span>(PerCap_Pct_Change),</span>
+<span id="cb13-27"><a href="hud-data.html#cb13-27" aria-hidden="true" tabindex="-1"></a>              <span class="at">Chronic_Pct_Change =</span> <span class="fu">sum</span>(Chronic_Pct_Change),</span>
+<span id="cb13-28"><a href="hud-data.html#cb13-28" aria-hidden="true" tabindex="-1"></a>              <span class="at">MI_Pct_Change=</span> <span class="fu">sum</span>(MI_Pct_Change),</span>
+<span id="cb13-29"><a href="hud-data.html#cb13-29" aria-hidden="true" tabindex="-1"></a>              <span class="at">SUD_Pct_Change =</span> <span class="fu">sum</span>(SUD_Pct_Change)</span>
+<span id="cb13-30"><a href="hud-data.html#cb13-30" aria-hidden="true" tabindex="-1"></a>              )</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="hud-data.html#cb14-1" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Înflation<span class="sc">$</span><span class="st">`</span><span class="at">Award (2015 $)</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">currency</span>(Trend_Data_2<span class="fl">.0</span>_Înflation<span class="sc">$</span><span class="st">`</span><span class="at">Award (2015 $)</span><span class="st">`</span>, <span class="at">digits =</span> 0L)</span>
+<span id="cb14-2"><a href="hud-data.html#cb14-2" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Înflation<span class="sc">$</span>Per_Capita <span class="ot">&lt;-</span> <span class="fu">currency</span>(Trend_Data_2<span class="fl">.0</span>_Înflation<span class="sc">$</span>Per_Capita, <span class="at">digits =</span> 2L)</span>
+<span id="cb14-3"><a href="hud-data.html#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="hud-data.html#cb14-4" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Înflation<span class="sc">$</span>Award_Pct_Change <span class="ot">&lt;-</span> <span class="fu">percent</span>(Trend_Data_2<span class="fl">.0</span>_Înflation<span class="sc">$</span>Award_Pct_Change, <span class="at">digits =</span> 2L)</span>
+<span id="cb14-5"><a href="hud-data.html#cb14-5" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Înflation<span class="sc">$</span>PIT_Pct_Change <span class="ot">&lt;-</span> <span class="fu">percent</span>(Trend_Data_2<span class="fl">.0</span>_Înflation<span class="sc">$</span>PIT_Pct_Change, <span class="at">digits =</span> 2L)</span>
+<span id="cb14-6"><a href="hud-data.html#cb14-6" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Înflation<span class="sc">$</span>PerCap_Pct_Change <span class="ot">&lt;-</span> <span class="fu">percent</span>(Trend_Data_2<span class="fl">.0</span>_Înflation<span class="sc">$</span>PIT_Pct_Change, <span class="at">digits =</span> 2L)</span>
+<span id="cb14-7"><a href="hud-data.html#cb14-7" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Înflation<span class="sc">$</span>Chronic_Pct_Change <span class="ot">&lt;-</span> <span class="fu">percent</span>(Trend_Data_2<span class="fl">.0</span>_Înflation<span class="sc">$</span>PerCap_Pct_Change, <span class="at">digits =</span> 2L)</span>
+<span id="cb14-8"><a href="hud-data.html#cb14-8" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Înflation<span class="sc">$</span>MI_Pct_Change <span class="ot">&lt;-</span> <span class="fu">percent</span>(Trend_Data_2<span class="fl">.0</span>_Înflation<span class="sc">$</span>MI_Pct_Change, <span class="at">digits =</span> 2L)</span>
+<span id="cb14-9"><a href="hud-data.html#cb14-9" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Înflation<span class="sc">$</span>SUD_Pct_Change <span class="ot">&lt;-</span> <span class="fu">percent</span>(Trend_Data_2<span class="fl">.0</span>_Înflation<span class="sc">$</span>SUD_Pct_Change, <span class="at">digits =</span> 2L)</span>
+<span id="cb14-10"><a href="hud-data.html#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="hud-data.html#cb14-11" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Înflation<span class="sc">$</span><span class="st">`</span><span class="at">Sheltered Homeless</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">format</span>(Trend_Data_2<span class="fl">.0</span>_Înflation<span class="sc">$</span><span class="st">`</span><span class="at">Sheltered Homeless</span><span class="st">`</span>,<span class="at">big.mark=</span><span class="st">&quot;,&quot;</span>, <span class="at">trim=</span><span class="cn">TRUE</span>)</span>
+<span id="cb14-12"><a href="hud-data.html#cb14-12" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Înflation<span class="sc">$</span><span class="st">`</span><span class="at">Unsheltered Homeless</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">format</span>(Trend_Data_2<span class="fl">.0</span>_Înflation<span class="sc">$</span><span class="st">`</span><span class="at">Unsheltered Homeless</span><span class="st">`</span>,<span class="at">big.mark=</span><span class="st">&quot;,&quot;</span>, <span class="at">trim=</span><span class="cn">TRUE</span>)</span>
+<span id="cb14-13"><a href="hud-data.html#cb14-13" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Înflation<span class="sc">$</span><span class="st">`</span><span class="at">Overall Homeless</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">format</span>(Trend_Data_2<span class="fl">.0</span>_Înflation<span class="sc">$</span><span class="st">`</span><span class="at">Overall Homeless</span><span class="st">`</span>,<span class="at">big.mark=</span><span class="st">&quot;,&quot;</span>, <span class="at">trim=</span><span class="cn">TRUE</span>)</span>
+<span id="cb14-14"><a href="hud-data.html#cb14-14" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Înflation<span class="sc">$</span><span class="st">`</span><span class="at">Overall Chronically Homeless</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">format</span>(Trend_Data_2<span class="fl">.0</span>_Înflation<span class="sc">$</span><span class="st">`</span><span class="at">Overall Chronically Homeless</span><span class="st">`</span>,<span class="at">big.mark=</span><span class="st">&quot;,&quot;</span>, <span class="at">trim=</span><span class="cn">TRUE</span>)</span>
+<span id="cb14-15"><a href="hud-data.html#cb14-15" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Înflation<span class="sc">$</span><span class="st">`</span><span class="at">Severely Mentally Ill</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">format</span>(Trend_Data_2<span class="fl">.0</span>_Înflation<span class="sc">$</span><span class="st">`</span><span class="at">Severely Mentally Ill</span><span class="st">`</span>,<span class="at">big.mark=</span><span class="st">&quot;,&quot;</span>, <span class="at">trim=</span><span class="cn">TRUE</span>)</span>
+<span id="cb14-16"><a href="hud-data.html#cb14-16" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Înflation<span class="sc">$</span><span class="st">`</span><span class="at">Chronic Substance Abuse</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">format</span>(Trend_Data_2<span class="fl">.0</span>_Înflation<span class="sc">$</span><span class="st">`</span><span class="at">Chronic Substance Abuse</span><span class="st">`</span>,<span class="at">big.mark=</span><span class="st">&quot;,&quot;</span>, <span class="at">trim=</span><span class="cn">TRUE</span>)</span>
+<span id="cb14-17"><a href="hud-data.html#cb14-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-18"><a href="hud-data.html#cb14-18" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Inflation_Nation<span class="sc">$</span><span class="st">`</span><span class="at">Award (2015 $)</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">currency</span>(Trend_Data_2<span class="fl">.0</span>_Inflation_Nation<span class="sc">$</span><span class="st">`</span><span class="at">Award (2015 $)</span><span class="st">`</span>, <span class="at">digits =</span> 0L)</span>
+<span id="cb14-19"><a href="hud-data.html#cb14-19" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Inflation_Nation<span class="sc">$</span>Per_Capita <span class="ot">&lt;-</span> <span class="fu">currency</span>(Trend_Data_2<span class="fl">.0</span>_Inflation_Nation<span class="sc">$</span>Per_Capita, <span class="at">digits =</span> 2L)</span>
+<span id="cb14-20"><a href="hud-data.html#cb14-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-21"><a href="hud-data.html#cb14-21" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Inflation_Nation<span class="sc">$</span>Award_Pct_Change <span class="ot">&lt;-</span> <span class="fu">percent</span>(Trend_Data_2<span class="fl">.0</span>_Inflation_Nation<span class="sc">$</span>Award_Pct_Change, <span class="at">digits =</span> 2L)</span>
+<span id="cb14-22"><a href="hud-data.html#cb14-22" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Inflation_Nation<span class="sc">$</span>PIT_Pct_Change <span class="ot">&lt;-</span> <span class="fu">percent</span>(Trend_Data_2<span class="fl">.0</span>_Inflation_Nation<span class="sc">$</span>PIT_Pct_Change, <span class="at">digits =</span> 2L)</span>
+<span id="cb14-23"><a href="hud-data.html#cb14-23" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Inflation_Nation<span class="sc">$</span>Chronic_Pct_Change <span class="ot">&lt;-</span> <span class="fu">percent</span>(Trend_Data_2<span class="fl">.0</span>_Inflation_Nation<span class="sc">$</span>Chronic_Pct_Change, <span class="at">digits =</span> 2L)</span>
+<span id="cb14-24"><a href="hud-data.html#cb14-24" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Inflation_Nation<span class="sc">$</span>MI_Pct_Change <span class="ot">&lt;-</span> <span class="fu">percent</span>(Trend_Data_2<span class="fl">.0</span>_Inflation_Nation<span class="sc">$</span>MI_Pct_Change, <span class="at">digits =</span> 2L)</span>
+<span id="cb14-25"><a href="hud-data.html#cb14-25" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Inflation_Nation<span class="sc">$</span>SUD_Pct_Change <span class="ot">&lt;-</span> <span class="fu">percent</span>(Trend_Data_2<span class="fl">.0</span>_Inflation_Nation<span class="sc">$</span>SUD_Pct_Change, <span class="at">digits =</span> 2L)</span>
+<span id="cb14-26"><a href="hud-data.html#cb14-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-27"><a href="hud-data.html#cb14-27" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Inflation_Nation<span class="sc">$</span><span class="st">`</span><span class="at">Sheltered Homeless</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">format</span>(Trend_Data_2<span class="fl">.0</span>_Inflation_Nation<span class="sc">$</span><span class="st">`</span><span class="at">Sheltered Homeless</span><span class="st">`</span>,<span class="at">big.mark=</span><span class="st">&quot;,&quot;</span>, <span class="at">trim=</span><span class="cn">TRUE</span>)</span>
+<span id="cb14-28"><a href="hud-data.html#cb14-28" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Inflation_Nation<span class="sc">$</span><span class="st">`</span><span class="at">Unsheltered Homeless</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">format</span>(Trend_Data_2<span class="fl">.0</span>_Inflation_Nation<span class="sc">$</span><span class="st">`</span><span class="at">Unsheltered Homeless</span><span class="st">`</span>,<span class="at">big.mark=</span><span class="st">&quot;,&quot;</span>, <span class="at">trim=</span><span class="cn">TRUE</span>)</span>
+<span id="cb14-29"><a href="hud-data.html#cb14-29" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Inflation_Nation<span class="sc">$</span><span class="st">`</span><span class="at">Overall Homeless</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">format</span>(Trend_Data_2<span class="fl">.0</span>_Inflation_Nation<span class="sc">$</span><span class="st">`</span><span class="at">Overall Homeless</span><span class="st">`</span>,<span class="at">big.mark=</span><span class="st">&quot;,&quot;</span>, <span class="at">trim=</span><span class="cn">TRUE</span>)</span>
+<span id="cb14-30"><a href="hud-data.html#cb14-30" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Inflation_Nation<span class="sc">$</span><span class="st">`</span><span class="at">Overall Chronically Homeless</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">format</span>(Trend_Data_2<span class="fl">.0</span>_Inflation_Nation<span class="sc">$</span><span class="st">`</span><span class="at">Overall Chronically Homeless</span><span class="st">`</span>,<span class="at">big.mark=</span><span class="st">&quot;,&quot;</span>, <span class="at">trim=</span><span class="cn">TRUE</span>)</span>
+<span id="cb14-31"><a href="hud-data.html#cb14-31" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Inflation_Nation<span class="sc">$</span><span class="st">`</span><span class="at">Severely Mentally Ill</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">format</span>(Trend_Data_2<span class="fl">.0</span>_Inflation_Nation<span class="sc">$</span><span class="st">`</span><span class="at">Severely Mentally Ill</span><span class="st">`</span>,<span class="at">big.mark=</span><span class="st">&quot;,&quot;</span>, <span class="at">trim=</span><span class="cn">TRUE</span>)</span>
+<span id="cb14-32"><a href="hud-data.html#cb14-32" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Inflation_Nation<span class="sc">$</span><span class="st">`</span><span class="at">Chronic Substance Abuse</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">format</span>(Trend_Data_2<span class="fl">.0</span>_Inflation_Nation<span class="sc">$</span><span class="st">`</span><span class="at">Chronic Substance Abuse</span><span class="st">`</span>,<span class="at">big.mark=</span><span class="st">&quot;,&quot;</span>, <span class="at">trim=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="hud-data.html#cb15-1" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Inflation_State<span class="sc">$</span><span class="st">`</span><span class="at">Award (2015 $)</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">currency</span>(Trend_Data_2<span class="fl">.0</span>_Inflation_State<span class="sc">$</span><span class="st">`</span><span class="at">Award (2015 $)</span><span class="st">`</span>, <span class="at">digits =</span> 0L)</span>
+<span id="cb15-2"><a href="hud-data.html#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="hud-data.html#cb15-3" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Inflation_State<span class="sc">$</span>Award_Pct_Change <span class="ot">&lt;-</span> <span class="fu">percent</span>(Trend_Data_2<span class="fl">.0</span>_Inflation_State<span class="sc">$</span>Award_Pct_Change, <span class="at">digits =</span> 2L)</span>
+<span id="cb15-4"><a href="hud-data.html#cb15-4" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Inflation_State<span class="sc">$</span>PIT_Pct_Change <span class="ot">&lt;-</span> <span class="fu">percent</span>(Trend_Data_2<span class="fl">.0</span>_Inflation_State<span class="sc">$</span>PIT_Pct_Change, <span class="at">digits =</span> 2L)</span>
+<span id="cb15-5"><a href="hud-data.html#cb15-5" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Inflation_State<span class="sc">$</span>PerCap_Pct_Change <span class="ot">&lt;-</span> <span class="fu">percent</span>(Trend_Data_2<span class="fl">.0</span>_Inflation_State<span class="sc">$</span>PIT_Pct_Change, <span class="at">digits =</span> 2L)</span>
+<span id="cb15-6"><a href="hud-data.html#cb15-6" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Inflation_State<span class="sc">$</span>Chronic_Pct_Change <span class="ot">&lt;-</span> <span class="fu">percent</span>(Trend_Data_2<span class="fl">.0</span>_Inflation_State<span class="sc">$</span>Chronic_Pct_Change, <span class="at">digits =</span> 2L)</span>
+<span id="cb15-7"><a href="hud-data.html#cb15-7" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Inflation_State<span class="sc">$</span>MI_Pct_Change <span class="ot">&lt;-</span> <span class="fu">percent</span>(Trend_Data_2<span class="fl">.0</span>_Inflation_State<span class="sc">$</span>MI_Pct_Change, <span class="at">digits =</span> 2L)</span>
+<span id="cb15-8"><a href="hud-data.html#cb15-8" aria-hidden="true" tabindex="-1"></a>Trend_Data_2<span class="fl">.0</span>_Inflation_State<span class="sc">$</span>SUD_Pct_Change <span class="ot">&lt;-</span> <span class="fu">percent</span>(Trend_Data_2<span class="fl">.0</span>_Inflation_State<span class="sc">$</span>SUD_Pct_Change, <span class="at">digits =</span> 2L)</span></code></pre></div>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="year-trend-table.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/alecng27/HomelessnessData/edit/master/01-HUD_Data.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": "https://github.com/alecng27/HomelessnessData/commits/master/01-HUD_Data.Rmd",
+"text": null
+},
+"view": {
+"link": "https://github.com/alecng27/HomelessnessData/blob/master/01-HUD_Data.Rmd",
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

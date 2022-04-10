@@ -1,0 +1,418 @@
+```{r include=FALSE, eval=FALSE, warning=FALSE, message=FALSE}
+CoC_Awards_by_CoC <- read_excel("2nd project CoC Awards.xlsx")
+HIC_by_CoC <- read_excel("2nd project 2015-2020-HIC-Counts-by-CoC.xlsx", sheet =1)
+PIT_by_CoC <- read_excel("2nd project 2015-2020-PIT-Estimates-by-CoC.xlsx", sheet =1)
+PIT_CoC_Category <- read_excel("2nd project 2015-2020-PIT-Estimates-by-CoC.xlsx", sheet =2)
+
+
+```
+
+
+```{r include=FALSE, eval=FALSE, warning=FALSE, message=FALSE}
+CoC_Awards_by_CoC <- CoC_Awards_by_CoC %>%
+  group_by(Year, `CoC Code`) %>%
+    summarise(`Award Amount` = sum(`Award Amount`)) %>%
+        mutate(Year = as.factor(Year)) %>%
+          as.data.frame()
+
+HIC_by_CoC <- HIC_by_CoC %>%
+  mutate(Year = as.factor(Year)) %>%
+    as.data.frame()
+
+PIT_by_CoC <- PIT_by_CoC %>%
+  mutate(Year = as.factor(Year)) %>%
+    as.data.frame()
+
+
+```
+
+
+```{r include=FALSE, eval=FALSE, warning=FALSE, message=FALSE}
+CoC_Awards_by_CoC_2020 <- CoC_Awards_by_CoC %>%
+  filter(Year == 2020) %>% 
+    select(`CoC Code`, `Award Amount`)
+
+CoC_Awards_by_CoC_2019 <- CoC_Awards_by_CoC %>%
+  filter(Year == 2019) %>% 
+    select(`CoC Code`, `Award Amount`)
+
+CoC_Awards_by_CoC_2018 <- CoC_Awards_by_CoC %>%
+  filter(Year == 2018) %>% 
+    select(`CoC Code`, `Award Amount`)
+
+CoC_Awards_by_CoC_2017 <- CoC_Awards_by_CoC %>%
+  filter(Year == 2017) %>% 
+    select(`CoC Code`, `Award Amount`)
+
+CoC_Awards_by_CoC_2016 <- CoC_Awards_by_CoC %>%
+  filter(Year == 2016) %>% 
+    select(`CoC Code`, `Award Amount`)
+
+CoC_Awards_by_CoC_2015 <- CoC_Awards_by_CoC %>%
+  filter(Year == 2015) %>% 
+    select(`CoC Code`, `Award Amount`)
+
+
+HIC_by_CoC_2020 <- HIC_by_CoC %>%
+  filter(Year == 2020) 
+
+HIC_by_CoC_2019 <- HIC_by_CoC %>%
+  filter(Year == 2019) 
+
+HIC_by_CoC_2018 <- HIC_by_CoC %>%
+  filter(Year == 2018) 
+
+HIC_by_CoC_2017 <- HIC_by_CoC %>%
+  filter(Year == 2017) 
+
+HIC_by_CoC_2016 <- HIC_by_CoC %>%
+  filter(Year == 2016) 
+
+HIC_by_CoC_2015 <- HIC_by_CoC %>%
+  filter(Year == 2015) 
+
+
+PIT_by_CoC_2020 <- PIT_by_CoC %>%
+  filter(Year == 2020) %>% 
+    select(everything(), -Year) 
+
+PIT_by_CoC_2019 <- PIT_by_CoC %>%
+  filter(Year == 2019) %>% 
+    select(everything(), -Year) 
+
+PIT_by_CoC_2018 <- PIT_by_CoC %>%
+  filter(Year == 2018) %>% 
+    select(everything(), -Year) 
+
+PIT_by_CoC_2017 <- PIT_by_CoC %>%
+  filter(Year == 2017) %>% 
+    select(everything(), -Year) 
+
+PIT_by_CoC_2016 <- PIT_by_CoC %>%
+  filter(Year == 2016) %>% 
+    select(everything(), -Year) 
+
+PIT_by_CoC_2015 <- PIT_by_CoC %>%
+  filter(Year == 2015) %>% 
+    select(everything(), -Year) 
+
+
+```
+
+
+```{r include=FALSE, eval=FALSE, warning=FALSE, message=FALSE}
+Awards_HIC_merge_2015 <- CoC_Awards_by_CoC_2015 %>%
+inner_join(HIC_by_CoC_2015, by = 'CoC Code')
+
+Awards_HIC_merge_2016 <- CoC_Awards_by_CoC_2016 %>%
+inner_join(HIC_by_CoC_2016, by = 'CoC Code')
+
+Awards_HIC_merge_2017 <- CoC_Awards_by_CoC_2017 %>%
+inner_join(HIC_by_CoC_2017, by = 'CoC Code')
+
+Awards_HIC_merge_2018 <- CoC_Awards_by_CoC_2018 %>%
+inner_join(HIC_by_CoC_2018, by = 'CoC Code')
+
+Awards_HIC_merge_2019 <- CoC_Awards_by_CoC_2019 %>%
+inner_join(HIC_by_CoC_2019, by = 'CoC Code')
+
+Awards_HIC_merge_2020 <- CoC_Awards_by_CoC_2020 %>%
+inner_join(HIC_by_CoC_2020, by = 'CoC Code')
+
+
+```
+
+
+```{r include=FALSE, eval=FALSE, warning=FALSE, message=FALSE}
+Awards_HIC_PIT_merge_2015 <- Awards_HIC_merge_2015 %>%
+inner_join(PIT_by_CoC_2015, by = 'CoC Code')
+
+Awards_HIC_PIT_merge_2016 <- Awards_HIC_merge_2016 %>%
+inner_join(PIT_by_CoC_2016, by = 'CoC Code')
+
+Awards_HIC_PIT_merge_2017 <- Awards_HIC_merge_2017 %>%
+inner_join(PIT_by_CoC_2017, by = 'CoC Code')
+
+Awards_HIC_PIT_merge_2018 <- Awards_HIC_merge_2018 %>%
+inner_join(PIT_by_CoC_2018, by = 'CoC Code')
+
+Awards_HIC_PIT_merge_2019 <- Awards_HIC_merge_2019 %>%
+inner_join(PIT_by_CoC_2019, by = 'CoC Code')
+
+Awards_HIC_PIT_merge_2020 <- Awards_HIC_merge_2020 %>%
+inner_join(PIT_by_CoC_2020, by = 'CoC Code')
+
+
+Awards_HIC_PIT_merge_2015 <- PIT_CoC_Category %>%
+left_join(Awards_HIC_PIT_merge_2015, by = 'CoC Code')
+
+Awards_HIC_PIT_merge_2016 <- PIT_CoC_Category %>%
+left_join(Awards_HIC_PIT_merge_2016, by = 'CoC Code')
+
+Awards_HIC_PIT_merge_2017 <- PIT_CoC_Category %>%
+left_join(Awards_HIC_PIT_merge_2017, by = 'CoC Code')
+
+Awards_HIC_PIT_merge_2018 <- PIT_CoC_Category %>%
+left_join(Awards_HIC_PIT_merge_2018, by = 'CoC Code')
+
+Awards_HIC_PIT_merge_2019 <- PIT_CoC_Category %>%
+left_join(Awards_HIC_PIT_merge_2019, by = 'CoC Code')
+
+Awards_HIC_PIT_merge_2020 <- PIT_CoC_Category %>%
+left_join(Awards_HIC_PIT_merge_2020, by = 'CoC Code')
+
+
+```
+
+
+```{r include=FALSE, eval=FALSE, warning=FALSE, message=FALSE}
+noNAs_2 <- complete.cases(Awards_HIC_PIT_merge_2015)
+Awards_HIC_PIT_merge_2015 <- Awards_HIC_PIT_merge_2015[noNAs_2,]
+
+noNAs_3 <- complete.cases(Awards_HIC_PIT_merge_2016)
+Awards_HIC_PIT_merge_2016 <- Awards_HIC_PIT_merge_2016[noNAs_3,]
+
+noNAs_4 <- complete.cases(Awards_HIC_PIT_merge_2017)
+Awards_HIC_PIT_merge_2017 <- Awards_HIC_PIT_merge_2017[noNAs_4,]
+
+noNAs_5 <- complete.cases(Awards_HIC_PIT_merge_2018)
+Awards_HIC_PIT_merge_2018 <- Awards_HIC_PIT_merge_2018[noNAs_5,]
+
+noNAs_6 <- complete.cases(Awards_HIC_PIT_merge_2019)
+Awards_HIC_PIT_merge_2019 <- Awards_HIC_PIT_merge_2019[noNAs_6,]
+
+noNAs_7 <- complete.cases(Awards_HIC_PIT_merge_2020)
+Awards_HIC_PIT_merge_2020 <- Awards_HIC_PIT_merge_2020[noNAs_7,]
+
+
+```
+
+
+```{r include=FALSE, eval=FALSE, warning=FALSE, message=FALSE}
+HIC_PIT_project <- rbind(Awards_HIC_PIT_merge_2015, Awards_HIC_PIT_merge_2016)
+HIC_PIT_project <- rbind(HIC_PIT_project, Awards_HIC_PIT_merge_2017)
+HIC_PIT_project <- rbind(HIC_PIT_project, Awards_HIC_PIT_merge_2018)
+HIC_PIT_project <- rbind(HIC_PIT_project, Awards_HIC_PIT_merge_2019)
+HIC_PIT_project <- rbind(HIC_PIT_project, Awards_HIC_PIT_merge_2020)
+
+HIC_PIT_project <- HIC_PIT_project %>% as.data.frame()
+
+HIC_PIT_project_filter <- HIC_PIT_project %>% 
+  count(`CoC Code`) %>%
+  filter(n < 5) %>% 
+  select(`CoC Code`) %>%
+  as.data.frame()
+
+HIC_PIT_project_filter <- c('CA-523', 'CA-529','CA-530','CA-531','CO-505','MP-500','NJ-512','NY-525','OR-504')
+
+# Added %notin% function: 
+`%notin%` <- Negate(`%in%`)
+
+HIC_PIT_project <- HIC_PIT_project %>%
+  filter(`CoC Code` %notin% HIC_PIT_project_filter) %>%
+    select(`CoC Code`, `CoC Name`, `CoC Category`, Year, `Award Amount`, `Overall Homeless`:`Overall Chronically Homeless`, `Total Year-Round Beds (ES)`:`Total Year-Round Beds (OPH)`) %>%
+      add_column(`Severely Mentally Ill` = NA, .after = "Overall Chronically Homeless") %>%
+        add_column(`Chronic Substance Abuse` = NA, .after = "Severely Mentally Ill") %>%
+          mutate(`Total Year-Round Beds (ES, TH, RRH, PSH, OPH)` = `Total Year-Round Beds (ES)` + `Total Year-Round Beds (TH)` + `Total Year-Round Beds (RRH)` + `Total Year-Round Beds (PSH)` + 
+                   `Total Year-Round Beds (OPH)`, `Sheltered Homeless` = `Sheltered Total Homeless`) 
+
+HIC_PIT_project <- HIC_PIT_project[order(HIC_PIT_project$`CoC Code`),]
+  
+
+```
+
+
+```{r include=FALSE, eval=FALSE, warning=FALSE, message=FALSE}
+HIC_PIT_project <- HIC_PIT_project %>% 
+ as.data.frame() %>%
+ mutate(Award_Pct_Change = (`Award Amount`/lag(`Award Amount`) - 1),
+        PIT_Pct_Change = (`Overall Homeless`/lag(`Overall Homeless`) - 1),
+        Per_Capita = (`Award Amount`/`Overall Homeless`),
+        PerCap_Pct_Change = (Per_Capita/lag(Per_Capita) - 1),
+        Chronic_Pct_Change = (`Overall Chronically Homeless`/lag(`Overall Chronically Homeless`) - 1),
+        MI_Pct_Change = (`Severely Mentally Ill`/lag(`Severely Mentally Ill`) - 1),
+        SUD_Pct_Change = (`Chronic Substance Abuse`/lag(`Chronic Substance Abuse`) - 1),
+        Total_bed_Pct_Change = (`Total Year-Round Beds (ES, TH, RRH, PSH, OPH)`/lag(`Total Year-Round Beds (ES, TH, RRH, PSH, OPH)`) - 1),
+        ES_bed_Pct_Change = (`Total Year-Round Beds (ES)`/lag(`Total Year-Round Beds (ES)`) - 1),
+        TH_bed_Pct_Change = (`Total Year-Round Beds (TH)`/lag(`Total Year-Round Beds (TH)`) - 1),
+        RRH_bed_Pct_Change = (`Total Year-Round Beds (RRH)`/lag(`Total Year-Round Beds (RRH)`) - 1),
+        PSH_bed_Pct_Change = (`Total Year-Round Beds (PSH)`/lag(`Total Year-Round Beds (PSH)`) - 1),
+        OPH_bed_Pct_Change = (`Total Year-Round Beds (OPH)`/lag(`Total Year-Round Beds (OPH)`) - 1)
+        ) %>%
+  mutate(Award_Pct_Change = Award_Pct_Change*100,
+         PIT_Pct_Change = PIT_Pct_Change*100,
+         PerCap_Pct_Change = PerCap_Pct_Change*100,
+         Chronic_Pct_Change = Chronic_Pct_Change*100,
+         MI_Pct_Change = MI_Pct_Change*100,
+         SUD_Pct_Change = SUD_Pct_Change*100,
+         Total_bed_Pct_Change = Total_bed_Pct_Change*100,
+         ES_bed_Pct_Change = ES_bed_Pct_Change*100,
+         TH_bed_Pct_Change = TH_bed_Pct_Change*100,
+         RRH_bed_Pct_Change = RRH_bed_Pct_Change*100,
+         PSH_bed_Pct_Change = PSH_bed_Pct_Change*100,
+         OPH_bed_Pct_Change = OPH_bed_Pct_Change*100
+         ) %>%
+  select(`CoC Code`:`Award Amount`,Award_Pct_Change, `Sheltered Homeless`, `Unsheltered Homeless`, `Overall Homeless`, PIT_Pct_Change, Per_Capita, 
+         PerCap_Pct_Change, `Overall Chronically Homeless`, Chronic_Pct_Change, `Severely Mentally Ill`, MI_Pct_Change, `Chronic Substance Abuse`, 
+         SUD_Pct_Change, `Total Year-Round Beds (ES, TH, RRH, PSH, OPH)`, Total_bed_Pct_Change, `Total Year-Round Beds (ES)`, ES_bed_Pct_Change,
+         `Total Year-Round Beds (TH)`, TH_bed_Pct_Change, `Total Year-Round Beds (RRH)`, RRH_bed_Pct_Change, `Total Year-Round Beds (PSH)`,
+         PSH_bed_Pct_Change, `Total Year-Round Beds (OPH)`, OPH_bed_Pct_Change
+         )
+
+HIC_PIT_project_by_CoC <- HIC_PIT_project %>%
+  mutate(Award_Pct_Change = ifelse(Year == "2015", "0", Award_Pct_Change),
+         PIT_Pct_Change = ifelse(Year == "2015", "0", PIT_Pct_Change),
+         PerCap_Pct_Change = ifelse(Year == "2015", "0", PerCap_Pct_Change),
+         Chronic_Pct_Change = ifelse(Year == "2015", "0", Chronic_Pct_Change),
+         MI_Pct_Change = ifelse(Year == "2015", "0", MI_Pct_Change),
+         SUD_Pct_Change = ifelse(Year == "2015", "0", SUD_Pct_Change),
+         Total_bed_Pct_Change = ifelse(Year == "2015", "0", Total_bed_Pct_Change),
+         ES_bed_Pct_Change = ifelse(Year == "2015", "0", ES_bed_Pct_Change),
+         TH_bed_Pct_Change = ifelse(Year == "2015", "0", TH_bed_Pct_Change),
+         RRH_bed_Pct_Change = ifelse(Year == "2015", "0", RRH_bed_Pct_Change),
+         PSH_bed_Pct_Change = ifelse(Year == "2015", "0", PSH_bed_Pct_Change),
+         OPH_bed_Pct_Change = ifelse(Year == "2015", "0", OPH_bed_Pct_Change)
+         ) %>%
+  mutate(Award_Pct_Change = as.numeric(Award_Pct_Change),
+         PIT_Pct_Change = as.numeric(PIT_Pct_Change),
+         PerCap_Pct_Change = as.numeric(PerCap_Pct_Change),
+         Chronic_Pct_Change = as.numeric(Chronic_Pct_Change),
+         MI_Pct_Change = as.numeric(MI_Pct_Change),
+         SUD_Pct_Change = as.numeric(SUD_Pct_Change),
+         Total_bed_Pct_Change = as.numeric(Total_bed_Pct_Change),
+         ES_bed_Pct_Change = as.numeric(ES_bed_Pct_Change),
+         TH_bed_Pct_Change = as.numeric(TH_bed_Pct_Change),
+         RRH_bed_Pct_Change = as.numeric(RRH_bed_Pct_Change),
+         PSH_bed_Pct_Change = as.numeric(PSH_bed_Pct_Change),
+         OPH_bed_Pct_Change = as.numeric(OPH_bed_Pct_Change)
+         ) 
+        
+HIC_PIT_project <- HIC_PIT_project %>%
+  mutate(Award_Pct_Change = ifelse(Year == "2015", "NA", Award_Pct_Change),
+         PIT_Pct_Change = ifelse(Year == "2015", "NA", PIT_Pct_Change),
+         PerCap_Pct_Change = ifelse(Year == "2015", "NA", PerCap_Pct_Change),
+         Chronic_Pct_Change = ifelse(Year == "2015", "NA", Chronic_Pct_Change),
+         MI_Pct_Change = ifelse(Year == "2015", "NA", MI_Pct_Change),
+         SUD_Pct_Change = ifelse(Year == "2015", "NA", SUD_Pct_Change),
+         Total_bed_Pct_Change = ifelse(Year == "2015", "NA", Total_bed_Pct_Change),
+         ES_bed_Pct_Change = ifelse(Year == "2015", "NA", ES_bed_Pct_Change),
+         TH_bed_Pct_Change = ifelse(Year == "2015", "NA", TH_bed_Pct_Change),
+         RRH_bed_Pct_Change = ifelse(Year == "2015", "NA", RRH_bed_Pct_Change),
+         PSH_bed_Pct_Change = ifelse(Year == "2015", "NA", PSH_bed_Pct_Change),
+         OPH_bed_Pct_Change = ifelse(Year == "2015", "NA", OPH_bed_Pct_Change)
+         ) %>%
+  mutate(Award_Pct_Change = as.numeric(Award_Pct_Change),
+         PIT_Pct_Change = as.numeric(PIT_Pct_Change),
+         PerCap_Pct_Change = as.numeric(PerCap_Pct_Change),
+         Chronic_Pct_Change = as.numeric(Chronic_Pct_Change),
+         MI_Pct_Change = as.numeric(MI_Pct_Change),
+         SUD_Pct_Change = as.numeric(SUD_Pct_Change),
+         Total_bed_Pct_Change = as.numeric(Total_bed_Pct_Change),
+         ES_bed_Pct_Change = as.numeric(ES_bed_Pct_Change),
+         TH_bed_Pct_Change = as.numeric(TH_bed_Pct_Change),
+         RRH_bed_Pct_Change = as.numeric(RRH_bed_Pct_Change),
+         PSH_bed_Pct_Change = as.numeric(PSH_bed_Pct_Change),
+         OPH_bed_Pct_Change = as.numeric(OPH_bed_Pct_Change)
+         ) 
+
+
+```
+
+
+```{r include=FALSE, eval=FALSE, warning=FALSE, message=FALSE}
+HIC_PIT_project_by_CoC <- HIC_PIT_project_by_CoC %>%
+  group_by(`CoC Code`, `CoC Name`, `CoC Category`) %>%
+    summarise(`Award Amount` = sum(`Award Amount`),
+              Award_Pct_Change = sum(Award_Pct_Change),
+              PIT_Pct_Change = sum(PIT_Pct_Change), 
+              PerCap_Pct_Change = sum(PerCap_Pct_Change),
+              Chronic_Pct_Change = sum(Chronic_Pct_Change),
+              MI_Pct_Change= sum(MI_Pct_Change),
+              SUD_Pct_Change = sum(SUD_Pct_Change),
+              Total_bed_Pct_Change = sum(Total_bed_Pct_Change),
+              ES_bed_Pct_Change = sum(ES_bed_Pct_Change),
+              TH_bed_Pct_Change = sum(TH_bed_Pct_Change),
+              RRH_bed_Pct_Change = sum(RRH_bed_Pct_Change),
+              PSH_bed_Pct_Change = sum(PSH_bed_Pct_Change),
+              OPH_bed_Pct_Change = sum(OPH_bed_Pct_Change)
+              )
+
+
+```
+
+
+```{r include=FALSE, eval=FALSE, warning=FALSE, message=FALSE}
+#write.csv(HIC_PIT_project, "HIC_PIT_project.csv")
+#write.csv(HIC_PIT_project_by_CoC, "HIC_PIT_project_by_CoC.csv")
+
+```
+
+
+```{r include=FALSE, eval=FALSE, warning=FALSE, message=FALSE}
+# Reformat columns for better visual output
+# Adding dollar sign and comma for separation 
+HIC_PIT_project$`Award Amount` <- currency(HIC_PIT_project$`Award Amount`, digits = 0L)
+HIC_PIT_project$Per_Capita <- currency(HIC_PIT_project$Per_Capita, digits = 2L)
+# Adding percentage sign
+HIC_PIT_project$Award_Pct_Change <- percent(HIC_PIT_project$Award_Pct_Change, digits = 2L)
+HIC_PIT_project$PIT_Pct_Change <- percent(HIC_PIT_project$PIT_Pct_Change, digits = 2L)
+HIC_PIT_project$PerCap_Pct_Change <- percent(HIC_PIT_project$PerCap_Pct_Change, digits = 2L)
+HIC_PIT_project$Chronic_Pct_Change <- percent(HIC_PIT_project$Chronic_Pct_Change, digits = 2L)
+HIC_PIT_project$MI_Pct_Change <- percent(HIC_PIT_project$MI_Pct_Change, digits = 2L)
+HIC_PIT_project$SUD_Pct_Change <- percent(HIC_PIT_project$SUD_Pct_Change, digits = 2L)
+HIC_PIT_project$Total_bed_Pct_Change <- percent(HIC_PIT_project$Total_bed_Pct_Change, digits = 2L)
+HIC_PIT_project$ES_bed_Pct_Change <- percent(HIC_PIT_project$ES_bed_Pct_Change, digits = 2L)
+HIC_PIT_project$TH_bed_Pct_Change <- percent(HIC_PIT_project$TH_bed_Pct_Change, digits = 2L)
+HIC_PIT_project$RRH_bed_Pct_Change <- percent(HIC_PIT_project$RRH_bed_Pct_Change, digits = 2L)
+HIC_PIT_project$PSH_bed_Pct_Change <- percent(HIC_PIT_project$PSH_bed_Pct_Change, digits = 2L)
+HIC_PIT_project$OPH_bed_Pct_Change <- percent(HIC_PIT_project$OPH_bed_Pct_Change, digits = 2L)
+# Adding comma sign for digits separation every 3 units
+HIC_PIT_project$`Sheltered Homeless` <- format(HIC_PIT_project$`Sheltered Homeless`,big.mark=",", trim=TRUE)
+HIC_PIT_project$`Unsheltered Homeless` <- format(HIC_PIT_project$`Unsheltered Homeless`,big.mark=",", trim=TRUE)
+HIC_PIT_project$`Overall Homeless` <- format(HIC_PIT_project$`Overall Homeless`,big.mark=",", trim=TRUE)
+HIC_PIT_project$`Overall Chronically Homeless` <- format(HIC_PIT_project$`Overall Chronically Homeless`,big.mark=",", trim=TRUE)
+HIC_PIT_project$`Severely Mentally Ill` <- format(HIC_PIT_project$`Severely Mentally Ill`,big.mark=",", trim=TRUE)
+HIC_PIT_project$`Chronic Substance Abuse` <- format(HIC_PIT_project$`Chronic Substance Abuse`,big.mark=",", trim=TRUE)
+HIC_PIT_project$`Total Year-Round Beds (ES, TH, RRH, PSH, OPH)` <- format(HIC_PIT_project$`Total Year-Round Beds (ES, TH, RRH, PSH, OPH)`,big.mark=",", trim=TRUE)
+HIC_PIT_project$`Total Year-Round Beds (ES)` <- format(HIC_PIT_project$`Total Year-Round Beds (ES)`,big.mark=",", trim=TRUE)
+HIC_PIT_project$`Total Year-Round Beds (TH)` <- format(HIC_PIT_project$`Total Year-Round Beds (TH)`,big.mark=",", trim=TRUE)
+HIC_PIT_project$`Total Year-Round Beds (RRH)` <- format(HIC_PIT_project$`Total Year-Round Beds (RRH)`,big.mark=",", trim=TRUE)
+HIC_PIT_project$`Total Year-Round Beds (PSH)` <- format(HIC_PIT_project$`Total Year-Round Beds (PSH)`,big.mark=",", trim=TRUE)
+HIC_PIT_project$`Total Year-Round Beds (OPH)` <- format(HIC_PIT_project$`Total Year-Round Beds (OPH)`,big.mark=",", trim=TRUE)
+
+
+HIC_PIT_project_by_CoC$`Award Amount` <- currency(HIC_PIT_project_by_CoC$`Award Amount`, digits = 0L)
+HIC_PIT_project_by_CoC$Award_Pct_Change <- percent(HIC_PIT_project_by_CoC$Award_Pct_Change, digits = 2L)
+HIC_PIT_project_by_CoC$PIT_Pct_Change <- percent(HIC_PIT_project_by_CoC$PIT_Pct_Change, digits = 2L)
+HIC_PIT_project_by_CoC$PerCap_Pct_Change <- percent(HIC_PIT_project_by_CoC$PerCap_Pct_Change, digits = 2L)
+HIC_PIT_project_by_CoC$Chronic_Pct_Change <- percent(HIC_PIT_project_by_CoC$Chronic_Pct_Change, digits = 2L)
+HIC_PIT_project_by_CoC$MI_Pct_Change <- percent(HIC_PIT_project_by_CoC$MI_Pct_Change, digits = 2L)
+HIC_PIT_project_by_CoC$SUD_Pct_Change <- percent(HIC_PIT_project_by_CoC$SUD_Pct_Change, digits = 2L)
+HIC_PIT_project_by_CoC$Total_bed_Pct_Change <- percent(HIC_PIT_project_by_CoC$Total_bed_Pct_Change, digits = 2L)
+HIC_PIT_project_by_CoC$ES_bed_Pct_Change <- percent(HIC_PIT_project_by_CoC$ES_bed_Pct_Change, digits = 2L)
+HIC_PIT_project_by_CoC$TH_bed_Pct_Change <- percent(HIC_PIT_project_by_CoC$TH_bed_Pct_Change, digits = 2L)
+HIC_PIT_project_by_CoC$RRH_bed_Pct_Change <- percent(HIC_PIT_project_by_CoC$RRH_bed_Pct_Change, digits = 2L)
+HIC_PIT_project_by_CoC$PSH_bed_Pct_Change <- percent(HIC_PIT_project_by_CoC$PSH_bed_Pct_Change, digits = 2L)
+HIC_PIT_project_by_CoC$OPH_bed_Pct_Change <- percent(HIC_PIT_project_by_CoC$OPH_bed_Pct_Change, digits = 2L)
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

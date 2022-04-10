@@ -1,0 +1,166 @@
+# 1st Project: 5-Year Trend Table {-}
+
+A trend table containing percent-change-data of different variables for 54 individual states across 2015-2020 time period:
+
+```{r echo=FALSE, warning=FALSE, message=FALSE, results='asis'}
+#write.csv(Trend_Data_2.0, "first_project.csv")
+first_project <- read_excel("Data/1st_project/first_project.xlsx")
+
+first_project <- first_project %>%
+  mutate(Award_Pct_Change = as.numeric(Award_Pct_Change),
+         PIT_Pct_Change = as.numeric(PIT_Pct_Change),
+         PerCap_Pct_Change = as.numeric(PerCap_Pct_Change),
+         Chronic_Pct_Change = as.numeric(Chronic_Pct_Change),
+         MI_Pct_Change = as.numeric(MI_Pct_Change),
+         SUD_Pct_Change = as.numeric(SUD_Pct_Change)
+         )
+
+#kable(first_project[1:324,])
+
+data1 <- SharedData$new(first_project)
+bscols(
+  widths = c(3, NA),
+  list(
+    filter_select("State", "State", data1, ~State),
+    filter_slider("Year", "Year", data1, ~Year, ticks = FALSE, sep = FALSE)
+    ),
+reactable(data1, searchable = TRUE, showPageSizeOptions = TRUE, defaultPageSize = 10, highlight = TRUE, bordered = TRUE, height = 700,
+          columns = list(
+          `Award Amount` = colDef(format = colFormat(prefix = "$", separators = TRUE)),
+          Per_Capita = colDef(name = "Per Capita", format = colFormat(prefix = "$", separators = TRUE, digits = 2)),
+          Award_Pct_Change = colDef(name = "Award %Change", format = colFormat(suffix = "%", separators = TRUE, digits = 2)),
+          PIT_Pct_Change = colDef(name = "PIT %Change", format = colFormat(suffix = "%", separators = TRUE, digits = 2)),
+          PerCap_Pct_Change = colDef(name = "Per Capita %Change", format = colFormat(suffix = "%", separators = TRUE, digits = 2)),
+          Chronic_Pct_Change = colDef(name = "Chronic %Change", format = colFormat(suffix = "%", separators = TRUE, digits = 2)),
+          MI_Pct_Change = colDef(name = "MI %Change", format = colFormat(suffix = "%", separators = TRUE, digits = 2)),
+          SUD_Pct_Change = colDef(name = "SUD %Change", format = colFormat(suffix = "%", separators = TRUE, digits = 2)),
+          `Sheltered Homeless` = colDef(format = colFormat(separators = TRUE)),
+          `Unsheltered Homeless` = colDef(format = colFormat(separators = TRUE)),
+          `Overall Homeless` = colDef(format = colFormat(separators = TRUE)),
+          `Overall Chronically Homeless` = colDef(format = colFormat(separators = TRUE)),
+          `Severely Mentally Ill` = colDef(format = colFormat(separators = TRUE)),
+          `Chronic Substance Abuse` = colDef(format = colFormat(separators = TRUE))
+          )))
+```
+
+
+## State Average {-}
+
+A trend table containing total sum of percent-change-data all years for 54 individual states:
+
+```{r echo=FALSE, warning=FALSE, message=FALSE, results='asis'}
+#write.csv(Trend_Data_2.0_State, "first_project_State.csv")
+first_project_State <- read_excel("Data/1st_project/first_project_State.xlsx")
+
+first_project_State <- first_project_State %>%
+  mutate(Award_Pct_Change = as.numeric(Award_Pct_Change),
+         PIT_Pct_Change = as.numeric(PIT_Pct_Change),
+         PerCap_Pct_Change = as.numeric(PerCap_Pct_Change),
+         Chronic_Pct_Change = as.numeric(Chronic_Pct_Change),
+         MI_Pct_Change = as.numeric(MI_Pct_Change),
+         SUD_Pct_Change = as.numeric(SUD_Pct_Change)
+         )
+
+#kable(first_project_State[1:54,])
+
+data2 <- SharedData$new(first_project_State)
+bscols(
+  widths = c(3, NA),
+  list(
+    filter_select("State", "State", data2, ~State)
+    ),
+reactable(data2, searchable = TRUE, showPageSizeOptions = TRUE, defaultPageSize = 10, highlight = TRUE, bordered = TRUE, height = 500,
+          columns = list(
+          `Award Amount` = colDef(format = colFormat(prefix = "$", separators = TRUE)),
+          Award_Pct_Change = colDef(name = "Award %Change", format = colFormat(suffix = "%", separators = TRUE, digits = 2)),
+          PIT_Pct_Change = colDef(name = "PIT %Change", format = colFormat(suffix = "%", separators = TRUE, digits = 2)),
+          PerCap_Pct_Change = colDef(name = "Per Capita %Change", format = colFormat(suffix = "%", separators = TRUE, digits = 2)),
+          Chronic_Pct_Change = colDef(name = "Chronic %Change", format = colFormat(suffix = "%", separators = TRUE, digits = 2)),
+          MI_Pct_Change = colDef(name = "MI %Change", format = colFormat(suffix = "%", separators = TRUE, digits = 2)),
+          SUD_Pct_Change = colDef(name = "SUD %Change", format = colFormat(suffix = "%", separators = TRUE, digits = 2))
+          )))
+```
+
+
+## Nation Average {-}
+
+A trend table containing total sum of different variables and % change of those variables of all states for each year across 2015-2020:
+
+```{r echo=FALSE, warning=FALSE, message=FALSE, results='asis'}
+#write.csv(Trend_Data_2.0_Nation, "first_project_Nation.csv")
+first_project_Nation <- read_excel("Data/1st_project/first_project_Nation.xlsx")
+
+first_project_Nation <- first_project_Nation %>%
+  mutate(Award_Pct_Change = as.numeric(Award_Pct_Change),
+         PIT_Pct_Change = as.numeric(PIT_Pct_Change),
+         PerCap_Pct_Change = as.numeric(PerCap_Pct_Change),
+         Chronic_Pct_Change = as.numeric(Chronic_Pct_Change),
+         MI_Pct_Change = as.numeric(MI_Pct_Change),
+         SUD_Pct_Change = as.numeric(SUD_Pct_Change)
+         )
+
+#kable(first_project_Nation[1:6,])
+
+data3 <- SharedData$new(first_project_Nation)
+
+reactable(data3, searchable = TRUE, showPageSizeOptions = TRUE, defaultPageSize = 10, highlight = TRUE, bordered = TRUE,
+          columns = list(
+          `Award Amount` = colDef(format = colFormat(prefix = "$", separators = TRUE)),
+          Per_Capita = colDef(name = "Per Capita", format = colFormat(prefix = "$", separators = TRUE, digits = 2)),
+          Award_Pct_Change = colDef(name = "Award %Change", format = colFormat(suffix = "%", separators = TRUE, digits = 2)),
+          PIT_Pct_Change = colDef(name = "PIT %Change", format = colFormat(suffix = "%", separators = TRUE, digits = 2)),
+          PerCap_Pct_Change = colDef(name = "Per Capita %Change", format = colFormat(suffix = "%", separators = TRUE, digits = 2)),
+          Chronic_Pct_Change = colDef(name = "Chronic %Change", format = colFormat(suffix = "%", separators = TRUE, digits = 2)),
+          MI_Pct_Change = colDef(name = "MI %Change", format = colFormat(suffix = "%", separators = TRUE, digits = 2)),
+          SUD_Pct_Change = colDef(name = "SUD %Change", format = colFormat(suffix = "%", separators = TRUE, digits = 2)),
+          `Sheltered Homeless` = colDef(format = colFormat(separators = TRUE)),
+          `Unsheltered Homeless` = colDef(format = colFormat(separators = TRUE)),
+          `Overall Homeless` = colDef(format = colFormat(separators = TRUE)),
+          `Overall Chronically Homeless` = colDef(format = colFormat(separators = TRUE)),
+          `Severely Mentally Ill` = colDef(format = colFormat(separators = TRUE)),
+          `Chronic Substance Abuse` = colDef(format = colFormat(separators = TRUE))
+          ))
+```
+
+
+
+
+```{r include=FALSE, eval=FALSE, warning=FALSE, message=FALSE}
+
+# 5-Year Trend Table (Inflation Adjusted) {-}
+
+All values of "Award Amount" has been adjusted using CPI Index with 2015 as the base-year dollar value. This change will also influence the "Per Capita" column. A trend table containing percent-change-data for 54 individual states across 2015-2020 time period:
+
+
+#write.csv(Trend_Data_2.0_Înflation, "first_project_Inflation.csv")
+first_project_Inflation <- read_excel("Data/1st_project/first_project_Inflation.xlsx")
+
+kable(first_project_Inflation[1:324,])
+
+
+
+## State Average {-}
+
+A trend table containing total sum of percent-change-data all years for 54 individual states:
+
+#write.csv(Trend_Data_2.0_Inflation_State, "first_project_Inflation_State.csv")
+first_project_Inflation_State <- read_excel("Data/1st_project/first_project_Inflation_State.xlsx")
+
+kable(first_project_Inflation_State[1:54,])
+
+
+
+## Nation Average {-}
+
+A trend table containing total sum of percent-change-data all states for each year across 2015-2020:
+
+#write.csv(Trend_Data_2.0_Inflation_Nation, "first_project_Inflation_Nation.csv")
+first_project_Inflation_Nation <- read_excel("Data/1st_project/first_project_Inflation_Nation.xlsx")
+
+kable(first_project_Inflation_Nation[1:6,])
+
+
+```
+
+
+

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3rd Project: Map Visualization | Homeless Data Project</title>
+  <meta name="description" content="3rd Project: Map Visualization | Homeless Data Project" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3rd Project: Map Visualization | Homeless Data Project" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3rd Project: Map Visualization | Homeless Data Project" />
+  
+  
+  
+
+<meta name="author" content="Alec Nguyen" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="nd-project-hicpit-trend-table.html"/>
+
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/selectize-0.12.4/css/selectize.bootstrap3.css" rel="stylesheet" />
+<script src="libs/selectize-0.12.4/js/selectize.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<script src="libs/ionrangeslider-javascript-2.3.1/js/ion.rangeSlider.min.js"></script>
+<script src="libs/strftime-0.9.2/strftime-min.js"></script>
+<link href="libs/ionrangeslider-css-2.3.1/css/ion.rangeSlider.css" rel="stylesheet" />
+<script src="libs/core-js-2.5.3/shim.min.js"></script>
+<script src="libs/react-17.0.0/react.min.js"></script>
+<script src="libs/react-17.0.0/react-dom.min.js"></script>
+<script src="libs/reactwidget-1.0.0/react-tools.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/reactable-binding-0.2.3/reactable.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-grid-3.4.1/bootstrap-grid.min.css" rel="stylesheet" />
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Sources</a></li>
+<li class="chapter" data-level="" data-path="st-project-5-year-trend-table.html"><a href="st-project-5-year-trend-table.html"><i class="fa fa-check"></i>1st Project: 5-Year Trend Table</a>
+<ul>
+<li class="chapter" data-level="" data-path="st-project-5-year-trend-table.html"><a href="st-project-5-year-trend-table.html#state-average"><i class="fa fa-check"></i>State Average</a></li>
+<li class="chapter" data-level="" data-path="st-project-5-year-trend-table.html"><a href="st-project-5-year-trend-table.html#nation-average"><i class="fa fa-check"></i>Nation Average</a></li>
+<li class="chapter" data-level="" data-path="st-project-5-year-trend-table.html"><a href="st-project-5-year-trend-table.html#revisions-notes"><i class="fa fa-check"></i>Revisions &amp; Notes</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="nd-project-hicpit-trend-table.html"><a href="nd-project-hicpit-trend-table.html"><i class="fa fa-check"></i>2nd Project: HIC/PIT Trend Table</a>
+<ul>
+<li class="chapter" data-level="" data-path="nd-project-hicpit-trend-table.html"><a href="nd-project-hicpit-trend-table.html#coc-average"><i class="fa fa-check"></i>CoC Average</a></li>
+<li class="chapter" data-level="" data-path="nd-project-hicpit-trend-table.html"><a href="nd-project-hicpit-trend-table.html#revisions-notes-1"><i class="fa fa-check"></i>Revisions &amp; Notes</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="rd-project-map-visualization.html"><a href="rd-project-map-visualization.html"><i class="fa fa-check"></i>3rd Project: Map Visualization</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Homeless Data Project</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="rd-project-map-visualization" class="section level1 unnumbered">
+<h1>3rd Project: Map Visualization</h1>
+<p>Link to the application: <a href="https://alecng.shinyapps.io/application/" class="uri">https://alecng.shinyapps.io/application/</a></p>
+<iframe src="https://alecng.shinyapps.io/application/?showcase=0" width="1440" height="600" data-external="1">
+</iframe>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="nd-project-hicpit-trend-table.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,512 @@
+```{r include=FALSE, warning=FALSE, message=FALSE}
+library(plm) 
+library(tidycensus)
+library(tidyverse)
+library(scales)
+library(lubridate)
+library(assertive)
+library(visdat)
+library(stringdist)
+library(fuzzyjoin)
+library(reclin)
+library(sf)
+library(pander)
+library(stargazer)
+library(shiny)
+library(readxl)
+library(formattable)
+library(naniar)
+library(knitr)
+library(reactable)
+library(crosstalk)
+library(wbstats) # To get data from the World Bank API
+options(tigris_use_cache = TRUE)
+## turn off scientific notation
+options(scipen = 5)
+```
+
+
+```{r include=FALSE, eval=FALSE, warning=FALSE, message=FALSE}
+CoC_Awards <- read_excel("1st project CoC Awards.xlsx")
+PIT_Chronic_Data <- read_excel("1st project 2015-2020 PIT, Chronic.xlsx", sheet =2)
+
+```
+
+
+```{r include=FALSE, eval=FALSE, warning=FALSE, message=FALSE}
+CoC_Awards <- CoC_Awards %>%
+  group_by(Year, State) %>%
+    summarise(`Award Amount` = sum(`Award Amount`)) %>%
+      arrange(desc(Year)) %>%
+         filter(State != "MP") %>%
+          mutate(Year = as.factor(Year), State = as.factor(State))
+
+PIT_Chronic_Data <- PIT_Chronic_Data %>% 
+          mutate(Year = as.factor(Year), State = as.factor(State))
+
+```
+
+
+```{r include=FALSE, eval=FALSE, warning=FALSE, message=FALSE}
+PIT_Chronic_Data2020 <- PIT_Chronic_Data %>%
+  filter(Year == 2020) %>%
+  select(everything(), -Year)
+
+CoC_Awards2020 <- CoC_Awards %>%
+  filter(Year == 2020) 
+
+Trend_Data2020 <- PIT_Chronic_Data2020 %>%
+  inner_join(CoC_Awards2020, by = "State") %>%
+    select(Year, everything())
+
+# Checking matches between datasets
+# PIT_Chronic_Data2020 %>%
+#  anti_join(CoC_Awards2020, by = "State")
+
+PIT_Chronic_Data2019 <- PIT_Chronic_Data %>%
+  filter(Year == 2019) %>%
+  select(everything(), -Year)
+
+CoC_Awards2019 <- CoC_Awards %>%
+  filter(Year == 2019) 
+
+Trend_Data2019 <- PIT_Chronic_Data2019 %>%
+  inner_join(CoC_Awards2019, by = "State") %>%
+    select(Year, everything())
+
+# Checking matches between datasets
+# PIT_Chronic_Data2019 %>%
+#  anti_join(CoC_Awards2019, by = "State")
+
+PIT_Chronic_Data2018 <- PIT_Chronic_Data %>%
+  filter(Year == 2018) %>%
+  select(everything(), -Year)
+
+CoC_Awards2018 <- CoC_Awards %>%
+  filter(Year == 2018) 
+
+Trend_Data2018 <- PIT_Chronic_Data2018 %>%
+  inner_join(CoC_Awards2018, by = "State") %>%
+    select(Year, everything())
+
+# Checking matches between datasets
+# PIT_Chronic_Data2018 %>%
+#  anti_join(CoC_Awards2018, by = "State")
+
+PIT_Chronic_Data2017 <- PIT_Chronic_Data %>%
+  filter(Year == 2017) %>%
+  select(everything(), -Year)
+
+CoC_Awards2017 <- CoC_Awards %>%
+  filter(Year == 2017) 
+
+Trend_Data2017 <- PIT_Chronic_Data2017 %>%
+  inner_join(CoC_Awards2017, by = "State") %>%
+    select(Year, everything())
+
+# Checking matches between datasets
+# PIT_Chronic_Data2017 %>%
+#  anti_join(CoC_Awards2017, by = "State")
+
+PIT_Chronic_Data2016 <- PIT_Chronic_Data %>%
+  filter(Year == 2016) %>%
+  select(everything(), -Year)
+
+CoC_Awards2016 <- CoC_Awards %>%
+  filter(Year == 2016) 
+
+Trend_Data2016 <- PIT_Chronic_Data2016 %>%
+  inner_join(CoC_Awards2016, by = "State") %>%
+    select(Year, everything())
+
+# Checking matches between datasets
+# PIT_Chronic_Data2016 %>%
+#  anti_join(CoC_Awards2016, by = "State")
+
+PIT_Chronic_Data2015 <- PIT_Chronic_Data %>%
+  filter(Year == 2015) %>%
+  select(everything(), -Year)
+
+CoC_Awards2015 <- CoC_Awards %>%
+  filter(Year == 2015) 
+
+Trend_Data2015 <- PIT_Chronic_Data2015 %>%
+  inner_join(CoC_Awards2015, by = "State") %>%
+    select(Year, everything())
+
+# Checking matches between datasets
+# PIT_Chronic_Data2015 %>%
+#  anti_join(CoC_Awards2015, by = "State")
+
+```
+
+
+```{r include=FALSE, eval=FALSE, warning=FALSE, message=FALSE}
+# Joining Data
+Trend_Data <- rbind(Trend_Data2015, Trend_Data2016)
+Trend_Data <- rbind(Trend_Data, Trend_Data2017)
+Trend_Data <- rbind(Trend_Data, Trend_Data2018)
+Trend_Data <- rbind(Trend_Data, Trend_Data2019)
+Trend_Data <- rbind(Trend_Data, Trend_Data2020)
+
+# get vector of TRUE and FALSE where FALSE indicates there's one or more NA
+noNAs <- complete.cases(Trend_Data)
+# sum(noNAs)
+## out of how many rows:
+# nrow(noNAs)
+
+# keep rows without any NA
+Trend_Data <- Trend_Data[noNAs,]
+
+# Trend_Data %>% count(State) %>% filter(n < 7)
+
+Trend_Data <- Trend_Data %>%
+  as.data.frame(Trend_Data) %>%
+    select(Year, State, `Award Amount`, `Overall Homeless`, `Sheltered Homeless`, `Unsheltered Homeless`, `Overall Chronically Homeless`)
+
+```
+
+
+```{r include=FALSE, eval=FALSE, warning=FALSE, message=FALSE}
+## Export Trend_Data.csv file into pc and input MI and SUB variables manually due to HUD not making these two varaibles available in their datasets
+
+# write.csv(Trend_Data, "Trend_Data.csv")
+
+```
+
+
+```{r include=FALSE, eval=FALSE, warning=FALSE, message=FALSE}
+Trend_Data_2.0 <- read_excel("1st project Trend_Data.xlsx")
+
+```
+
+
+```{r include=FALSE, eval=FALSE, warning=FALSE, message=FALSE}
+Trend_Data_2.0 <- Trend_Data_2.0 %>%
+ mutate(Award_Pct_Change = (`Award Amount`/lag(`Award Amount`) - 1),
+        PIT_Pct_Change = (`Overall Homeless`/lag(`Overall Homeless`) - 1),
+        Per_Capita = (`Award Amount`/`Overall Homeless`),
+        PerCap_Pct_Change = (Per_Capita/lag(Per_Capita) - 1),
+        Chronic_Pct_Change = (`Overall Chronically Homeless`/lag(`Overall Chronically Homeless`) - 1),
+        MI_Pct_Change = (`Severely Mentally Ill`/lag(`Severely Mentally Ill`) - 1),
+        SUD_Pct_Change = (`Chronic Substance Abuse`/lag(`Chronic Substance Abuse`) - 1)
+        ) %>%
+  mutate(Award_Pct_Change = Award_Pct_Change*100,
+         PIT_Pct_Change = PIT_Pct_Change*100,
+         PerCap_Pct_Change = PerCap_Pct_Change*100,
+         Chronic_Pct_Change = Chronic_Pct_Change*100,
+         MI_Pct_Change = MI_Pct_Change*100,
+         SUD_Pct_Change = SUD_Pct_Change*100,
+         ) 
+
+Trend_Data_2.0_State <- Trend_Data_2.0 %>%
+  mutate(Award_Pct_Change = ifelse(Year == "2015", "0", Award_Pct_Change),
+         PIT_Pct_Change = ifelse(Year == "2015", "0", PIT_Pct_Change),
+         PerCap_Pct_Change = ifelse(Year == "2015", "0", PerCap_Pct_Change),
+         Chronic_Pct_Change = ifelse(Year == "2015", "0", Chronic_Pct_Change),
+         MI_Pct_Change = ifelse(Year == "2015", "0", MI_Pct_Change),
+         SUD_Pct_Change = ifelse(Year == "2015", "0", SUD_Pct_Change)
+         ) %>%
+  mutate(Award_Pct_Change = as.numeric(Award_Pct_Change),
+         PIT_Pct_Change = as.numeric(PIT_Pct_Change),
+         PerCap_Pct_Change = as.numeric(PerCap_Pct_Change),
+         Chronic_Pct_Change = as.numeric(Chronic_Pct_Change),
+         MI_Pct_Change = as.numeric(MI_Pct_Change),
+         SUD_Pct_Change = as.numeric(SUD_Pct_Change)
+         )
+
+Trend_Data_2.0 <- Trend_Data_2.0 %>%
+  mutate(Award_Pct_Change = ifelse(Year == "2015", "NA", Award_Pct_Change),
+         PIT_Pct_Change = ifelse(Year == "2015", "NA", PIT_Pct_Change),
+         PerCap_Pct_Change = ifelse(Year == "2015", "NA", PerCap_Pct_Change),
+         Chronic_Pct_Change = ifelse(Year == "2015", "NA", Chronic_Pct_Change),
+         MI_Pct_Change = ifelse(Year == "2015", "NA", MI_Pct_Change),
+         SUD_Pct_Change = ifelse(Year == "2015", "NA", SUD_Pct_Change)
+         ) %>%
+  mutate(Award_Pct_Change = as.numeric(Award_Pct_Change),
+         PIT_Pct_Change = as.numeric(PIT_Pct_Change),
+         PerCap_Pct_Change = as.numeric(PerCap_Pct_Change),
+         Chronic_Pct_Change = as.numeric(Chronic_Pct_Change),
+         MI_Pct_Change = as.numeric(MI_Pct_Change),
+         SUD_Pct_Change = as.numeric(SUD_Pct_Change)
+         )
+
+
+Trend_Data_2.0 <- Trend_Data_2.0 %>%
+  select(Year, State, `Award Amount`, Award_Pct_Change, `Sheltered Homeless`, `Unsheltered Homeless`, `Overall Homeless`, PIT_Pct_Change, Per_Capita, 
+         PerCap_Pct_Change, `Overall Chronically Homeless`, Chronic_Pct_Change, `Severely Mentally Ill`, MI_Pct_Change, `Chronic Substance Abuse`, SUD_Pct_Change)
+
+Trend_Data_2.0_State <- Trend_Data_2.0_State %>%
+  select(Year, State, `Award Amount`, Award_Pct_Change, `Sheltered Homeless`, `Unsheltered Homeless`, `Overall Homeless`, PIT_Pct_Change, Per_Capita,
+         PerCap_Pct_Change, `Overall Chronically Homeless`, Chronic_Pct_Change, `Severely Mentally Ill`, MI_Pct_Change, `Chronic Substance Abuse`, SUD_Pct_Change)
+
+```
+
+
+```{r include=FALSE, eval=FALSE, warning=FALSE, message=FALSE}
+Trend_Data_2.0_Nation <- Trend_Data_2.0_State %>%
+  group_by(Year) %>%
+    summarise(`Award Amount` = sum(`Award Amount`),
+              `Sheltered Homeless` = sum(`Sheltered Homeless`), 
+              `Unsheltered Homeless` = sum(`Unsheltered Homeless`), 
+              `Overall Homeless` = sum(`Overall Homeless`), 
+              `Overall Chronically Homeless` = sum(`Overall Chronically Homeless`), 
+              `Severely Mentally Ill` = sum(`Severely Mentally Ill`), 
+              `Chronic Substance Abuse` = sum(`Chronic Substance Abuse`)
+              ) %>%
+   mutate(Award_Pct_Change = (`Award Amount`/lag(`Award Amount`) - 1),
+        PIT_Pct_Change = (`Overall Homeless`/lag(`Overall Homeless`) - 1),
+        Per_Capita = (`Award Amount`/`Overall Homeless`),
+        PerCap_Pct_Change = (Per_Capita/lag(Per_Capita) - 1),
+        Chronic_Pct_Change = (`Overall Chronically Homeless`/lag(`Overall Chronically Homeless`) - 1),
+        MI_Pct_Change = (`Severely Mentally Ill`/lag(`Severely Mentally Ill`) - 1),
+        SUD_Pct_Change = (`Chronic Substance Abuse`/lag(`Chronic Substance Abuse`) - 1)
+        ) %>%
+  mutate(Award_Pct_Change = Award_Pct_Change*100,
+         PIT_Pct_Change = PIT_Pct_Change*100,
+         PerCap_Pct_Change = PerCap_Pct_Change*100,
+         Chronic_Pct_Change = Chronic_Pct_Change*100,
+         MI_Pct_Change = MI_Pct_Change*100,
+         SUD_Pct_Change = SUD_Pct_Change*100,
+         ) %>%
+  select(Year, `Award Amount`, Award_Pct_Change, `Sheltered Homeless`, `Unsheltered Homeless`, `Overall Homeless`, PIT_Pct_Change, Per_Capita, 
+         PerCap_Pct_Change, `Overall Chronically Homeless`, Chronic_Pct_Change, `Severely Mentally Ill`, MI_Pct_Change, `Chronic Substance Abuse`, 
+         SUD_Pct_Change)
+
+Trend_Data_2.0_State <- Trend_Data_2.0_State %>%
+  group_by(State) %>%
+    summarise(`Award Amount` = sum(`Award Amount`),
+              Award_Pct_Change = sum(Award_Pct_Change),
+              PIT_Pct_Change = sum(PIT_Pct_Change), 
+              PerCap_Pct_Change = sum(PerCap_Pct_Change),
+              Chronic_Pct_Change = sum(Chronic_Pct_Change),
+              MI_Pct_Change= sum(MI_Pct_Change),
+              SUD_Pct_Change = sum(SUD_Pct_Change)
+              )
+
+```
+
+
+```{r include=FALSE, eval=FALSE, warning=FALSE, message=FALSE}
+# Reformat columns for better visual output
+# Adding dollar sign and comma for separation 
+Trend_Data_2.0$`Award Amount` <- currency(Trend_Data_2.0$`Award Amount`, digits = 0L)
+Trend_Data_2.0$Per_Capita <- currency(Trend_Data_2.0$Per_Capita, digits = 2L)
+# Adding percentage sign
+Trend_Data_2.0$Award_Pct_Change <- percent(Trend_Data_2.0$Award_Pct_Change, digits = 2L)
+Trend_Data_2.0$PIT_Pct_Change <- percent(Trend_Data_2.0$PIT_Pct_Change, digits = 2L)
+Trend_Data_2.0$PerCap_Pct_Change <- percent(Trend_Data_2.0$PerCap_Pct_Change, digits = 2L)
+Trend_Data_2.0$Chronic_Pct_Change <- percent(Trend_Data_2.0$Chronic_Pct_Change, digits = 2L)
+Trend_Data_2.0$MI_Pct_Change <- percent(Trend_Data_2.0$MI_Pct_Change, digits = 2L)
+Trend_Data_2.0$SUD_Pct_Change <- percent(Trend_Data_2.0$SUD_Pct_Change, digits = 2L)
+# Adding comma sign for digits separation every 3 units
+Trend_Data_2.0$`Sheltered Homeless` <- format(Trend_Data_2.0$`Sheltered Homeless`,big.mark=",", trim=TRUE)
+Trend_Data_2.0$`Unsheltered Homeless` <- format(Trend_Data_2.0$`Unsheltered Homeless`,big.mark=",", trim=TRUE)
+Trend_Data_2.0$`Overall Homeless` <- format(Trend_Data_2.0$`Overall Homeless`,big.mark=",", trim=TRUE)
+Trend_Data_2.0$`Overall Chronically Homeless` <- format(Trend_Data_2.0$`Overall Chronically Homeless`,big.mark=",", trim=TRUE)
+Trend_Data_2.0$`Severely Mentally Ill` <- format(Trend_Data_2.0$`Severely Mentally Ill`,big.mark=",", trim=TRUE)
+Trend_Data_2.0$`Chronic Substance Abuse` <- format(Trend_Data_2.0$`Chronic Substance Abuse`,big.mark=",", trim=TRUE)
+
+Trend_Data_2.0_Nation$`Award Amount` <- currency(Trend_Data_2.0_Nation$`Award Amount`, digits = 0L)
+Trend_Data_2.0_Nation$Per_Capita <- currency(Trend_Data_2.0_Nation$Per_Capita, digits = 2L)
+
+Trend_Data_2.0_Nation$Award_Pct_Change <- percent(Trend_Data_2.0_Nation$Award_Pct_Change, digits = 2L)
+Trend_Data_2.0_Nation$PIT_Pct_Change <- percent(Trend_Data_2.0_Nation$PIT_Pct_Change, digits = 2L)
+Trend_Data_2.0_Nation$Chronic_Pct_Change <- percent(Trend_Data_2.0_Nation$Chronic_Pct_Change, digits = 2L)
+Trend_Data_2.0_Nation$MI_Pct_Change <- percent(Trend_Data_2.0_Nation$MI_Pct_Change, digits = 2L)
+Trend_Data_2.0_Nation$SUD_Pct_Change <- percent(Trend_Data_2.0_Nation$SUD_Pct_Change, digits = 2L)
+
+Trend_Data_2.0_Nation$`Sheltered Homeless` <- format(Trend_Data_2.0_Nation$`Sheltered Homeless`,big.mark=",", trim=TRUE)
+Trend_Data_2.0_Nation$`Unsheltered Homeless` <- format(Trend_Data_2.0_Nation$`Unsheltered Homeless`,big.mark=",", trim=TRUE)
+Trend_Data_2.0_Nation$`Overall Homeless` <- format(Trend_Data_2.0_Nation$`Overall Homeless`,big.mark=",", trim=TRUE)
+Trend_Data_2.0_Nation$`Overall Chronically Homeless` <- format(Trend_Data_2.0_Nation$`Overall Chronically Homeless`,big.mark=",", trim=TRUE)
+Trend_Data_2.0_Nation$`Severely Mentally Ill` <- format(Trend_Data_2.0_Nation$`Severely Mentally Ill`,big.mark=",", trim=TRUE)
+Trend_Data_2.0_Nation$`Chronic Substance Abuse` <- format(Trend_Data_2.0_Nation$`Chronic Substance Abuse`,big.mark=",", trim=TRUE)
+
+Trend_Data_2.0_State$`Award Amount` <- currency(Trend_Data_2.0_State$`Award Amount`, digits = 0L)
+
+Trend_Data_2.0_State$Award_Pct_Change <- percent(Trend_Data_2.0_State$Award_Pct_Change, digits = 2L)
+Trend_Data_2.0_State$PIT_Pct_Change <- percent(Trend_Data_2.0_State$PIT_Pct_Change, digits = 2L)
+Trend_Data_2.0_State$PerCap_Pct_Change <- percent(Trend_Data_2.0_State$PerCap_Pct_Change, digits = 2L)
+Trend_Data_2.0_State$Chronic_Pct_Change <- percent(Trend_Data_2.0_State$Chronic_Pct_Change, digits = 2L)
+Trend_Data_2.0_State$MI_Pct_Change <- percent(Trend_Data_2.0_State$MI_Pct_Change, digits = 2L)
+Trend_Data_2.0_State$SUD_Pct_Change <- percent(Trend_Data_2.0_State$SUD_Pct_Change, digits = 2L)
+
+```
+
+
+```{r include=FALSE, eval=FALSE, warning=FALSE, message=FALSE}
+Trend_Data_2.0_Înflation <- read_excel("1st project Trend_Data_Inflation.xlsx")
+```
+
+
+```{r include=FALSE, eval=FALSE, warning=FALSE, message=FALSE}
+Trend_Data_2.0_Înflation <- Trend_Data_2.0_Înflation %>%
+ mutate(Award_Pct_Change = (`Award (2015 $)`/lag(`Award (2015 $)`) - 1),
+        PIT_Pct_Change = (`Overall Homeless`/lag(`Overall Homeless`) - 1),
+        Per_Capita = (`Award (2015 $)`/`Overall Homeless`),
+        PerCap_Pct_Change = (Per_Capita/lag(Per_Capita) - 1),
+        Chronic_Pct_Change = (`Overall Chronically Homeless`/lag(`Overall Chronically Homeless`) - 1),
+        MI_Pct_Change = (`Severely Mentally Ill`/lag(`Severely Mentally Ill`) - 1),
+        SUD_Pct_Change = (`Chronic Substance Abuse`/lag(`Chronic Substance Abuse`) - 1)
+        ) %>%
+  mutate(Award_Pct_Change = Award_Pct_Change*100,
+         PIT_Pct_Change = PIT_Pct_Change*100,
+         PerCap_Pct_Change = PerCap_Pct_Change*100,
+         Chronic_Pct_Change = Chronic_Pct_Change*100,
+         MI_Pct_Change = MI_Pct_Change*100,
+         SUD_Pct_Change = SUD_Pct_Change*100,
+         ) 
+
+Trend_Data_2.0_Inflation_State <- Trend_Data_2.0_Înflation %>%
+  mutate(Award_Pct_Change = ifelse(Year == "2015", "0", Award_Pct_Change),
+         PIT_Pct_Change = ifelse(Year == "2015", "0", PIT_Pct_Change),
+         PerCap_Pct_Change = ifelse(Year == "2015", "0", PerCap_Pct_Change),
+         Chronic_Pct_Change = ifelse(Year == "2015", "0", Chronic_Pct_Change),
+         MI_Pct_Change = ifelse(Year == "2015", "0", MI_Pct_Change),
+         SUD_Pct_Change = ifelse(Year == "2015", "0", SUD_Pct_Change)
+         ) %>%
+  mutate(Award_Pct_Change = as.numeric(Award_Pct_Change),
+         PIT_Pct_Change = as.numeric(PIT_Pct_Change),
+         PerCap_Pct_Change = as.numeric(PerCap_Pct_Change),
+         Chronic_Pct_Change = as.numeric(Chronic_Pct_Change),
+         MI_Pct_Change = as.numeric(MI_Pct_Change),
+         SUD_Pct_Change = as.numeric(SUD_Pct_Change)
+         )
+
+Trend_Data_2.0_Înflation <- Trend_Data_2.0_Înflation %>%
+  mutate(Award_Pct_Change = ifelse(Year == "2015", "NA", Award_Pct_Change),
+         PIT_Pct_Change = ifelse(Year == "2015", "NA", PIT_Pct_Change),
+         PerCap_Pct_Change = ifelse(Year == "2015", "NA", PerCap_Pct_Change),
+         Chronic_Pct_Change = ifelse(Year == "2015", "NA", Chronic_Pct_Change),
+         MI_Pct_Change = ifelse(Year == "2015", "NA", MI_Pct_Change),
+         SUD_Pct_Change = ifelse(Year == "2015", "NA", SUD_Pct_Change)
+         ) %>%
+  mutate(Award_Pct_Change = as.numeric(Award_Pct_Change),
+         PIT_Pct_Change = as.numeric(PIT_Pct_Change),
+         PerCap_Pct_Change = as.numeric(PerCap_Pct_Change),
+         Chronic_Pct_Change = as.numeric(Chronic_Pct_Change),
+         MI_Pct_Change = as.numeric(MI_Pct_Change),
+         SUD_Pct_Change = as.numeric(SUD_Pct_Change)
+         )
+
+
+Trend_Data_2.0_Înflation <- Trend_Data_2.0_Înflation %>%
+  select(Year, State, `Award (2015 $)`, Award_Pct_Change, `Sheltered Homeless`, `Unsheltered Homeless`, `Overall Homeless`, PIT_Pct_Change, Per_Capita, 
+         PerCap_Pct_Change, `Overall Chronically Homeless`, Chronic_Pct_Change, `Severely Mentally Ill`, MI_Pct_Change, `Chronic Substance Abuse`, SUD_Pct_Change)
+
+Trend_Data_2.0_Inflation_State <- Trend_Data_2.0_Inflation_State %>%
+  select(Year, State, `Award (2015 $)`, Award_Pct_Change, `Sheltered Homeless`, `Unsheltered Homeless`, `Overall Homeless`, PIT_Pct_Change, Per_Capita, 
+         PerCap_Pct_Change, `Overall Chronically Homeless`, Chronic_Pct_Change, `Severely Mentally Ill`, MI_Pct_Change, `Chronic Substance Abuse`, SUD_Pct_Change)
+
+```
+
+
+```{r include=FALSE, eval=FALSE, warning=FALSE, message=FALSE}
+Trend_Data_2.0_Inflation_Nation <- Trend_Data_2.0_Inflation_State %>%
+  group_by(Year) %>%
+    summarise(`Award (2015 $)` = sum(`Award (2015 $)`),
+              `Sheltered Homeless` = sum(`Sheltered Homeless`), 
+              `Unsheltered Homeless` = sum(`Unsheltered Homeless`), 
+              `Overall Homeless` = sum(`Overall Homeless`), 
+              `Overall Chronically Homeless` = sum(`Overall Chronically Homeless`), 
+              `Severely Mentally Ill` = sum(`Severely Mentally Ill`), 
+              `Chronic Substance Abuse` = sum(`Chronic Substance Abuse`)
+              ) %>%
+   mutate(Award_Pct_Change = (`Award (2015 $)`/lag(`Award (2015 $)`) - 1),
+        PIT_Pct_Change = (`Overall Homeless`/lag(`Overall Homeless`) - 1),
+        Per_Capita = (`Award (2015 $)`/`Overall Homeless`),
+        PerCap_Pct_Change = (Per_Capita/lag(Per_Capita) - 1),
+        Chronic_Pct_Change = (`Overall Chronically Homeless`/lag(`Overall Chronically Homeless`) - 1),
+        MI_Pct_Change = (`Severely Mentally Ill`/lag(`Severely Mentally Ill`) - 1),
+        SUD_Pct_Change = (`Chronic Substance Abuse`/lag(`Chronic Substance Abuse`) - 1)
+        ) %>%
+  mutate(Award_Pct_Change = Award_Pct_Change*100,
+         PIT_Pct_Change = PIT_Pct_Change*100,
+         PerCap_Pct_Change = PerCap_Pct_Change*100,
+         Chronic_Pct_Change = Chronic_Pct_Change*100,
+         MI_Pct_Change = MI_Pct_Change*100,
+         SUD_Pct_Change = SUD_Pct_Change*100,
+         ) %>%
+  select(Year, `Award (2015 $)`, Award_Pct_Change, `Sheltered Homeless`, `Unsheltered Homeless`, `Overall Homeless`, PIT_Pct_Change, Per_Capita, 
+         PerCap_Pct_Change, `Overall Chronically Homeless`, Chronic_Pct_Change, `Severely Mentally Ill`, MI_Pct_Change, `Chronic Substance Abuse`, 
+         SUD_Pct_Change)
+
+Trend_Data_2.0_Inflation_State <- Trend_Data_2.0_Inflation_State %>%
+  group_by(State) %>%
+    summarise(`Award (2015 $)` = sum(`Award (2015 $)`),
+              Award_Pct_Change = sum(Award_Pct_Change),
+              PIT_Pct_Change = sum(PIT_Pct_Change),
+              PerCap_Pct_Change = sum(PerCap_Pct_Change),
+              Chronic_Pct_Change = sum(Chronic_Pct_Change),
+              MI_Pct_Change= sum(MI_Pct_Change),
+              SUD_Pct_Change = sum(SUD_Pct_Change)
+              )
+
+```
+
+
+```{r include=FALSE, eval=FALSE, warning=FALSE, message=FALSE}
+Trend_Data_2.0_Înflation$`Award (2015 $)` <- currency(Trend_Data_2.0_Înflation$`Award (2015 $)`, digits = 0L)
+Trend_Data_2.0_Înflation$Per_Capita <- currency(Trend_Data_2.0_Înflation$Per_Capita, digits = 2L)
+
+Trend_Data_2.0_Înflation$Award_Pct_Change <- percent(Trend_Data_2.0_Înflation$Award_Pct_Change, digits = 2L)
+Trend_Data_2.0_Înflation$PIT_Pct_Change <- percent(Trend_Data_2.0_Înflation$PIT_Pct_Change, digits = 2L)
+Trend_Data_2.0_Înflation$PerCap_Pct_Change <- percent(Trend_Data_2.0_Înflation$PIT_Pct_Change, digits = 2L)
+Trend_Data_2.0_Înflation$Chronic_Pct_Change <- percent(Trend_Data_2.0_Înflation$PerCap_Pct_Change, digits = 2L)
+Trend_Data_2.0_Înflation$MI_Pct_Change <- percent(Trend_Data_2.0_Înflation$MI_Pct_Change, digits = 2L)
+Trend_Data_2.0_Înflation$SUD_Pct_Change <- percent(Trend_Data_2.0_Înflation$SUD_Pct_Change, digits = 2L)
+
+Trend_Data_2.0_Înflation$`Sheltered Homeless` <- format(Trend_Data_2.0_Înflation$`Sheltered Homeless`,big.mark=",", trim=TRUE)
+Trend_Data_2.0_Înflation$`Unsheltered Homeless` <- format(Trend_Data_2.0_Înflation$`Unsheltered Homeless`,big.mark=",", trim=TRUE)
+Trend_Data_2.0_Înflation$`Overall Homeless` <- format(Trend_Data_2.0_Înflation$`Overall Homeless`,big.mark=",", trim=TRUE)
+Trend_Data_2.0_Înflation$`Overall Chronically Homeless` <- format(Trend_Data_2.0_Înflation$`Overall Chronically Homeless`,big.mark=",", trim=TRUE)
+Trend_Data_2.0_Înflation$`Severely Mentally Ill` <- format(Trend_Data_2.0_Înflation$`Severely Mentally Ill`,big.mark=",", trim=TRUE)
+Trend_Data_2.0_Înflation$`Chronic Substance Abuse` <- format(Trend_Data_2.0_Înflation$`Chronic Substance Abuse`,big.mark=",", trim=TRUE)
+
+Trend_Data_2.0_Inflation_Nation$`Award (2015 $)` <- currency(Trend_Data_2.0_Inflation_Nation$`Award (2015 $)`, digits = 0L)
+Trend_Data_2.0_Inflation_Nation$Per_Capita <- currency(Trend_Data_2.0_Inflation_Nation$Per_Capita, digits = 2L)
+
+Trend_Data_2.0_Inflation_Nation$Award_Pct_Change <- percent(Trend_Data_2.0_Inflation_Nation$Award_Pct_Change, digits = 2L)
+Trend_Data_2.0_Inflation_Nation$PIT_Pct_Change <- percent(Trend_Data_2.0_Inflation_Nation$PIT_Pct_Change, digits = 2L)
+Trend_Data_2.0_Inflation_Nation$Chronic_Pct_Change <- percent(Trend_Data_2.0_Inflation_Nation$Chronic_Pct_Change, digits = 2L)
+Trend_Data_2.0_Inflation_Nation$MI_Pct_Change <- percent(Trend_Data_2.0_Inflation_Nation$MI_Pct_Change, digits = 2L)
+Trend_Data_2.0_Inflation_Nation$SUD_Pct_Change <- percent(Trend_Data_2.0_Inflation_Nation$SUD_Pct_Change, digits = 2L)
+
+Trend_Data_2.0_Inflation_Nation$`Sheltered Homeless` <- format(Trend_Data_2.0_Inflation_Nation$`Sheltered Homeless`,big.mark=",", trim=TRUE)
+Trend_Data_2.0_Inflation_Nation$`Unsheltered Homeless` <- format(Trend_Data_2.0_Inflation_Nation$`Unsheltered Homeless`,big.mark=",", trim=TRUE)
+Trend_Data_2.0_Inflation_Nation$`Overall Homeless` <- format(Trend_Data_2.0_Inflation_Nation$`Overall Homeless`,big.mark=",", trim=TRUE)
+Trend_Data_2.0_Inflation_Nation$`Overall Chronically Homeless` <- format(Trend_Data_2.0_Inflation_Nation$`Overall Chronically Homeless`,big.mark=",", trim=TRUE)
+Trend_Data_2.0_Inflation_Nation$`Severely Mentally Ill` <- format(Trend_Data_2.0_Inflation_Nation$`Severely Mentally Ill`,big.mark=",", trim=TRUE)
+Trend_Data_2.0_Inflation_Nation$`Chronic Substance Abuse` <- format(Trend_Data_2.0_Inflation_Nation$`Chronic Substance Abuse`,big.mark=",", trim=TRUE)
+
+```
+
+
+```{r include=FALSE, eval=FALSE, warning=FALSE, message=FALSE}
+Trend_Data_2.0_Inflation_State$`Award (2015 $)` <- currency(Trend_Data_2.0_Inflation_State$`Award (2015 $)`, digits = 0L)
+
+Trend_Data_2.0_Inflation_State$Award_Pct_Change <- percent(Trend_Data_2.0_Inflation_State$Award_Pct_Change, digits = 2L)
+Trend_Data_2.0_Inflation_State$PIT_Pct_Change <- percent(Trend_Data_2.0_Inflation_State$PIT_Pct_Change, digits = 2L)
+Trend_Data_2.0_Inflation_State$PerCap_Pct_Change <- percent(Trend_Data_2.0_Inflation_State$PIT_Pct_Change, digits = 2L)
+Trend_Data_2.0_Inflation_State$Chronic_Pct_Change <- percent(Trend_Data_2.0_Inflation_State$Chronic_Pct_Change, digits = 2L)
+Trend_Data_2.0_Inflation_State$MI_Pct_Change <- percent(Trend_Data_2.0_Inflation_State$MI_Pct_Change, digits = 2L)
+Trend_Data_2.0_Inflation_State$SUD_Pct_Change <- percent(Trend_Data_2.0_Inflation_State$SUD_Pct_Change, digits = 2L)
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
