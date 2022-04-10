@@ -1,5 +1,5 @@
 --- 
-title: "Homeless Data Project"
+title: "Homeless Database Project"
 author: "Alec Nguyen"
 date: "`r Sys.time()`"
 site: bookdown::bookdown_site
@@ -8,7 +8,12 @@ biblio-style: apalike
 link-citations: yes
 ---
 
-# Sources {-}
+# About {-}
+
+This project is end result from the internship with Hope Street Coalition.
+The goal is to create a database to help the public and decision makers understand HUD homelessness data- particularly the trends of homelessness counts and how they compare with housing inventory trends. The database provides an ability to compare local data with state data and generate graphic representations of the data.
+
+**Sources**
 
 [HUD Awards and Allocations](https://www.hudexchange.info/grantees/allocations-awards/)
 
@@ -17,13 +22,17 @@ link-citations: yes
 [CoC Homeless Populations and Subpopulations Reports](https://www.hudexchange.info/programs/coc/coc-homeless-populations-and-subpopulations-reports/)
 
 
+**Author**
 
+Alec Nguyen
 
+Economics, Lawrence University
 
+nguyeanh@lawrence.edu
 
+[LinkedIn](https://www.linkedin.com/in/alec-nguyen-about/)
 
-
-
+[Merit Page](https://meritpages.com/Alec_Nguyen)
 
 
 
