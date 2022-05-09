@@ -34,5 +34,24 @@ alec.nguyen27@gmail.com
 
 [Project Portfolio](https://alecng27.github.io/Portfolio/)
 
+<!-- <div style="width:125px; height:125px">   -->
+<!-- ![](signature.png)  -->
+<!-- </div> -->
+
+
+**Sponsor**
+
+Hope Street Coalition - http://www.hopestreetcoalition.org
+
+A 501(c)(3) nonprofit organization that advocates to change public policies and fix the broken homelessness, mental illness, 
+and addiction treatment policies at the state and national level. The benefits of these changes will be saved lives and improved communities. 
+Contact Hope Street at info@hopestreetcoalition.org
+  
+<div style="width:125px; height:125px">  
+![](hopestreetlogo.png)  
+</div>
+           
+
+
 
 
