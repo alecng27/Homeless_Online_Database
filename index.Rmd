@@ -1,7 +1,6 @@
 --- 
-title: "Homeless Database Project"
+title: "Homeless Online Database Project"
 author: "Alec Nguyen"
-date: "`r Sys.time()`"
 site: bookdown::bookdown_site
 bibliography: references.bib
 biblio-style: apalike
