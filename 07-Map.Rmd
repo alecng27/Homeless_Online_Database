@@ -8,7 +8,7 @@ knitr::opts_chunk$set(echo = FALSE, message=FALSE, warning=FALSE )
 library(tidyverse)
 ```
 
-Link to the application: https://alecng.shinyapps.io/application/
+Link to the application: https://alecng.shinyapps.io/Homeless_Data_Application/
 
 ```{r, fig.width = 15}
 knitr::include_app("https://alecng.shinyapps.io/application/",

@@ -29,5 +29,5 @@ h4 {
     border: 1px solid black;
 }
 .book .book-body .page-wrapper .page-inner {
-  max-width: 90%;
+  max-width: 60%;
 }
