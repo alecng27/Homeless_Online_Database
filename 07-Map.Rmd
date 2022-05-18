@@ -11,7 +11,7 @@ library(tidyverse)
 Link to the application: https://alecng.shinyapps.io/Homeless_Data_Application/
 
 ```{r, fig.width = 15}
-knitr::include_app("https://alecng.shinyapps.io/application/",
+knitr::include_app("https://alecng.shinyapps.io/Homeless_Data_Application/",
   height = 600)
 
 ```
