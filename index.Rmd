@@ -9,17 +9,20 @@ link-citations: yes
 
 # About {-}
 
+Database Source Code - https://github.com/alecng27/Homeless_Online_Database
+
 This project is the end result from the internship with Hope Street Coalition.
 The goal is to create a database to help the public and decision makers understand HUD homelessness data- particularly the trends of homelessness counts and how they compare with housing inventory trends. The database provides an ability to compare local data with state data and generate graphic representations of the data.
 
 **Sources**
 
-[HUD Awards and Allocations](https://www.hudexchange.info/grantees/allocations-awards/)
+[Awards and Allocations](https://www.hudexchange.info/grantees/allocations-awards/)
+
+[Awards by Project component and Type](https://www.hudexchange.info/programs/coc/awards-by-component/)
 
 [PIT and HIC Data Since 2007](https://www.hudexchange.info/resource/3031/pit-and-hic-data-since-2007/)
 
-[CoC Homeless Populations and Subpopulations Reports](https://www.hudexchange.info/programs/coc/coc-homeless-populations-and-subpopulations-reports/)
-
+[Homeless Populations and Subpopulations Reports](https://www.hudexchange.info/programs/coc/coc-homeless-populations-and-subpopulations-reports/)
 
 **Author**
 
